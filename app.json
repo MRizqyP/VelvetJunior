@@ -1,0 +1,9 @@
+{
+  "name": "VelvetApp",
+  "displayName": "VelvetApp",
+  "expo": {
+    "experiments": {
+      "turboModules": true
+    }
+  }
+}
