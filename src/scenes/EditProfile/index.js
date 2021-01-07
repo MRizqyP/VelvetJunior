@@ -134,7 +134,12 @@ function EditProfile({navigation}) {
             />
           </View>
         </View>
-        <View style={{flexDirection: 'row', marginLeft: 28}}>
+        <View
+          style={{
+            flexDirection: 'row',
+            paddingTop: 30,
+            justifyContent: 'center',
+          }}>
           <View style={styles.buttonBatal}>
             <Text
               style={{
