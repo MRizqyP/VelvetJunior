@@ -7,6 +7,8 @@ const images = {
   icon3: require('../assets/images/ic_kehadiran.png'),
   icon4: require('../assets/images/pasfoto.jpg'),
 
+  img_bg_awan: require('../assets/images/img_bg_awan.png'),
+  img_bg_splash: require('../assets/images/img_bg_splash_screen.png'),
   backgroundlogin: require('../assets/images/backgroundlogin.png'),
   backgroundprofile: require('../assets/images/backgroundprofile.png'),
   camera: require('../assets/images/camera.png'),

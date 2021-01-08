@@ -1,12 +1,20 @@
-import React, {Component, useRef} from 'react';
-import {Button, TouchableOpacity, Text, Alert, View} from 'react-native';
+import React, {useEffect, useRef} from 'react';
+import {
+  Button,
+  TouchableOpacity,
+  Text,
+  Alert,
+  View,
+  ActivityIndicator,
+} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import 'react-native-gesture-handler';
 import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-vector-icons/Feather';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import TabComponent from '../components/Tab';
 import Login from '../scenes/Login';
+import SplashScreen from '../scenes/SplasScreen';
 import AturKataSandi from '../scenes/AturKataSandi';
 
 import GantiKataSandi from '../scenes/GantiKataSandi';
@@ -16,9 +24,14 @@ import StackPurchaseOrders from './StackPurchaseOrder';
 import StackChats from './StackChat';
 import StackDashboards from './StackDashboard';
 import StackAbsen from './StackAbsen';
-
+import LottieView from 'lottie-react-native';
+// import moduleName from '../scenes/SplasScreen'
 const Tabs = createBottomTabNavigator();
 const Logins = createStackNavigator();
+
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as appActions from '../reduxs/actions';
 
 function stackTabs() {
   return (
@@ -85,7 +98,30 @@ function stackTabs() {
   );
 }
 
-export default function Routes() {
+function Routes(props) {
+  const {state, actions} = props;
+  //   console.log(state.login.isLoading);
+  //   console.log();
+  useEffect(() => {
+    setTimeout(async () => {
+      // setIsLoading(false);
+      let userToken;
+      userToken = null;
+      try {
+        userToken = await AsyncStorage.getItem('userToken');
+      } catch (e) {
+        console.log(e);
+      }
+      actions.RETRIEVE_TOKEN();
+    }, 2000);
+  }, []);
+  if (state.login.isLoading) {
+    return (
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <SplashScreen />
+      </View>
+    );
+  }
   return (
     <NavigationContainer>
       <Logins.Navigator>
@@ -124,3 +160,17 @@ export default function Routes() {
     </NavigationContainer>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    state: state,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(appActions.actions, dispatch),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Routes);

@@ -4,17 +4,18 @@ const {width, height} = Dimensions.get('window');
 export default StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#effafa',
   },
   imageCover: {
     resizeMode: 'cover',
     flex: 1,
   },
-  header: {
-    flex: 1,
-
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  // header: {
+  //   width: Dimensions.get('window').width,
+  //   height: 290,
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  // },
   errorMessage: {
     marginTop: 30,
     backgroundColor: 'rgba(224,32,32,0.08)',

@@ -14,7 +14,7 @@ export function* handleApiRequest(action) {
     };
 
     const response = yield call(axios, apiConfig);
-    console.log(response);
+    // console.log(response);
     yield put({type: types.API_REQUEST_SUCCEEDED, payload: response.data});
   } catch (e) {
     console.log(e);

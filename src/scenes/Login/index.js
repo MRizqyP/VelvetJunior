@@ -15,9 +15,10 @@ import Feather from 'react-native-vector-icons/Feather';
 import Button from '../../components/Button';
 import styles from './styles';
 import FormInput from '../../components/FormInput';
-import {FONT_BOLD_16} from '../../styles/typography';
+import {FONT_BOLD_14, FONT_REGULAR_14} from '../../styles/typography';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import images from '../../assets';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 function Login({navigation}) {
   var screenWidth = Dimensions.get('window').width;
   const [form, setForm] = useState({
@@ -44,12 +45,12 @@ function Login({navigation}) {
       <StatusBar backgroundColor="#43ABA4" barStyle={'default'} />
       <View style={styles.header}>
         <Image source={images.logo} style={{width: 120, height: 70}} />
-        <View style={styles.errorMessage}>
+        {/* <View style={styles.errorMessage}>
           <Feather name="alert-circle" color="red" size={20} />
           <Text style={styles.textError}>
             Kata Sandi yang anda masukan salah!
           </Text>
-        </View>
+        </View> */}
       </View>
       <View
         style={{
@@ -57,7 +58,7 @@ function Login({navigation}) {
           marginRight: 28,
         }}>
         <View>
-          <Text style={FONT_BOLD_16}>NIK</Text>
+          <Text style={FONT_BOLD_14}>NIK</Text>
           <View style={styles.action}>
             <Feather name="user" color="orange" size={20} />
             <FormInput
@@ -68,8 +69,8 @@ function Login({navigation}) {
             />
           </View>
         </View>
-        <View>
-          <Text style={FONT_BOLD_16}>Password</Text>
+        <View style={{marginTop: 15}}>
+          <Text style={[FONT_BOLD_14]}>Kata Sandi</Text>
           <View style={styles.action}>
             <Feather name="lock" color="orange" size={20} />
             <FormInput
@@ -88,12 +89,14 @@ function Login({navigation}) {
             </TouchableOpacity>
           </View>
         </View>
-        <View style={{marginTop: 30}}>
+        <View style={{marginTop: 20}}>
           <TouchableOpacity
             onPress={() => {
               navigation.navigate('Lupa Sandi');
             }}>
-            <Text style={{color: '#F18A04'}}>Lupa kata sandi?</Text>
+            <Text style={[FONT_REGULAR_14, {color: '#F18A04'}]}>
+              Lupa kata sandi?
+            </Text>
           </TouchableOpacity>
         </View>
         <Button onPress={masuk} text={'Masuk'} />
@@ -103,7 +106,7 @@ function Login({navigation}) {
         style={{
           width: screenWidth,
           height: 150,
-          alignSelf: 'flex-end',
+          justifyContent: 'flex-end',
         }}
         source={images.backgroundlogin}
       />

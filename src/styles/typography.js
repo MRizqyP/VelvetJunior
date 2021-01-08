@@ -1,10 +1,11 @@
 import {scaleFont} from './mixins';
 
 // FONT FAMILY
-export const FONT_FAMILY_REGULAR = 'MaisonNeue-Book';
-export const FONT_FAMILY_MEDIUM = 'MaisonNeue-Medium';
-export const FONT_FAMILY_BOLD = 'MaisonNeue-DemiBold';
-export const FONT_FAMILY_OPEN_SANS_SEMI_BOLD = 'OpenSans-SemiBold';
+export const FONT_FAMILY_REGULAR = 'Rubik-Regular';
+export const FONT_FAMILY_MEDIUM = 'Rubik-Medium';
+export const FONT_FAMILY_BOLD = 'Rubik-Bold';
+export const FONT_FAMILY_OPEN_SANS_SEMI_BOLD = 'OpenSans-Bold';
+export const FONT_FAMILY_SANS_REGULAR = 'OpenSans-Reguler';
 
 // FONT WEIGHT
 export const FONT_WEIGHT_REGULAR = '400';
@@ -60,6 +61,17 @@ export const FONT_MEDIUM_12 = {
   fontFamily: FONT_FAMILY_MEDIUM,
   fontSize: FONT_SIZE_12,
   fontWeight: FONT_WEIGHT_REGULAR,
+};
+
+export const FONT_BOLD_12 = {
+  fontFamily: FONT_FAMILY_BOLD,
+  fontSize: FONT_SIZE_12,
+  fontWeight: FONT_WEIGHT_BOLD,
+};
+export const FONT_BOLD_14 = {
+  fontFamily: FONT_FAMILY_BOLD,
+  fontSize: FONT_SIZE_14,
+  // fontWeight: FONT_WEIGHT_BOLD,
 };
 
 export const FONT_BOLD_16 = {

@@ -1,12 +1,12 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
-import {FONT_SIZE_20} from '../styles/typography';
+import {FONT_BOLD_18} from '../styles/typography';
 
 export default function Button({text, onPress}) {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.buttonMasuk}>
-        <Text style={styles.textButton}>{text}</Text>
+        <Text style={[FONT_BOLD_18, styles.textButton]}>{text}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -14,8 +14,7 @@ export default function Button({text, onPress}) {
 const styles = StyleSheet.create({
   textButton: {
     color: 'white',
-    fontWeight: 'bold',
-    fontSize: FONT_SIZE_20,
+    // fontSize: FONT_BOLD_14,
     textAlign: 'center',
   },
   buttonMasuk: {
