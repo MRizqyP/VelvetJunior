@@ -9,8 +9,15 @@ import {
 } from 'react-native';
 import Images from '../../assets';
 import styles from './styles';
-function Profile({navigation}) {
+import jwt_decode from 'jwt-decode';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as appActions from '../../reduxs/actions';
+
+function Profile(props) {
+  const {state, actions, navigation} = props;
   const logout = async () => {
+    actions.LOGOUT();
     navigation.navigate('Log In');
   };
   var screenWidth = Dimensions.get('window').width;
@@ -117,4 +124,16 @@ function Profile({navigation}) {
   );
 }
 
-export default Profile;
+const mapStateToProps = (state) => {
+  return {
+    state: state,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(appActions.actions, dispatch),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

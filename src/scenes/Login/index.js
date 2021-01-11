@@ -18,21 +18,34 @@ import FormInput from '../../components/FormInput';
 import {FONT_BOLD_14, FONT_REGULAR_14} from '../../styles/typography';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import images from '../../assets';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-function Login({navigation}) {
+import jwt_decode from 'jwt-decode';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as appActions from '../../reduxs/actions';
+
+function Login(props) {
   var screenWidth = Dimensions.get('window').width;
   const [form, setForm] = useState({
     email: '',
     password: '',
-    secureTextEntry: true,
+    secureTextEntry: false,
     token: '',
   });
   const [add, setAdd] = useState(false);
-  console.log(form);
+  const {state, actions, navigation} = props;
 
   const masuk = async () => {
-    navigation.navigate('Home');
+    await actions.LOGIN_REQ({email: form.email, password: form.password});
   };
+  if (state.login.userToken) {
+    var decoded = jwt_decode(state.login.userToken);
+    console.log(decoded.role.name);
+    if (decoded.role.name === 'Sales Person') {
+      navigation.navigate('DashboardSP');
+    } else if (decoded.role.name === 'Sales Manager') {
+      navigation.navigate('DashboardSM');
+    }
+  }
 
   const updateSecureTextEntry = () => {
     setForm({
@@ -40,17 +53,20 @@ function Login({navigation}) {
       secureTextEntry: !form.secureTextEntry,
     });
   };
+
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor="#43ABA4" barStyle={'default'} />
       <View style={styles.header}>
         <Image source={images.logo} style={{width: 120, height: 70}} />
-        {/* <View style={styles.errorMessage}>
-          <Feather name="alert-circle" color="red" size={20} />
-          <Text style={styles.textError}>
-            Kata Sandi yang anda masukan salah!
-          </Text>
-        </View> */}
+        {state.login.isError ? (
+          <View style={styles.errorMessage}>
+            <Feather name="alert-circle" color="red" size={20} />
+            <Text style={styles.textError}>
+              Kata Sandi yang anda masukan salah!
+            </Text>
+          </View>
+        ) : null}
       </View>
       <View
         style={{
@@ -70,8 +86,16 @@ function Login({navigation}) {
           </View>
         </View>
         <View style={{marginTop: 15}}>
-          <Text style={[FONT_BOLD_14]}>Kata Sandi</Text>
-          <View style={styles.action}>
+          <Text
+            style={
+              state.login.isError
+                ? [FONT_BOLD_14, {color: '#E02020'}]
+                : [FONT_BOLD_14]
+            }>
+            Kata Sandi
+          </Text>
+          <View
+            style={state.login.isError ? styles.actionError : styles.action}>
             <Feather name="lock" color="orange" size={20} />
             <FormInput
               placeholder="Masukan kata sandi anda"
@@ -81,7 +105,7 @@ function Login({navigation}) {
               onChangeText={(text) => setForm({...form, password: text})}
             />
             <TouchableOpacity onPress={updateSecureTextEntry}>
-              {form.secureTextEntry ? (
+              {!form.secureTextEntry ? (
                 <Feather name="eye-off" color="orange" size={20} />
               ) : (
                 <Feather name="eye" color="orange" size={20} />
@@ -114,4 +138,16 @@ function Login({navigation}) {
   );
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {
+    state: state,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(appActions.actions, dispatch),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

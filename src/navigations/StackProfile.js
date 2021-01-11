@@ -7,11 +7,11 @@ import GantiSandi from '../scenes/GantiSandi';
 import EditProfile from '../scenes/EditProfile';
 export default function StackProfile({navigation, route}) {
   const Profiles = createStackNavigator();
-  if (route.state && route.state.index > 0) {
-    navigation.setOptions({tabBarVisible: false});
-  } else {
-    navigation.setOptions({tabBarVisible: true});
-  }
+  //   if (route.state && route.state.index > 0) {
+  //     navigation.setOptions({tabBarVisible: false});
+  //   } else {
+  //     navigation.setOptions({tabBarVisible: true});
+  //   }
   return (
     <Profiles.Navigator>
       <Profiles.Screen

@@ -23,6 +23,8 @@ const images = {
   img_list_pesanan: require('../assets/images/img_list_pesanan.png'),
   kode_otp: require('../assets/images/kode_otp.png'),
   npwp: require('../assets/images/npwp.jpg'),
+  img_visiting_toko: require('../assets/images/img_visiting_toko.png'),
+  img_absen_default: require('../assets/images/img_absen_default.png'),
   //   backgroundlogin : require('../assets/images/backgroundlogin.png'),
 };
 

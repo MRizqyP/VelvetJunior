@@ -7,11 +7,11 @@ import Dashboard from '../scenes/Dashboard';
 import Berhasil from '../scenes/Berhasil';
 export default function StackDashboards({navigation, route}) {
   const Dashboards = createStackNavigator();
-  if (route.state && route.state.index > 0) {
-    navigation.setOptions({tabBarVisible: false});
-  } else {
-    navigation.setOptions({tabBarVisible: true});
-  }
+  //   if (route.state && route.state.index > 0) {
+  //     navigation.setOptions({tabBarVisible: false});
+  //   } else {
+  //     navigation.setOptions({tabBarVisible: true});
+  //   }
   return (
     <Dashboards.Navigator>
       <Dashboards.Screen

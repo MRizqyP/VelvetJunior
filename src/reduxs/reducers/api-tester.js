@@ -2,6 +2,7 @@ import * as types from '../actions/action-types';
 
 const initialState = {
   apiMsg: '',
+  data: null,
 };
 
 export default function apiTester(state = initialState, action = {}) {
@@ -10,6 +11,7 @@ export default function apiTester(state = initialState, action = {}) {
       return {
         ...state,
         apiMsg: 'API called succeeded!',
+        data: action.payload.id,
       };
     case types.API_REQUEST_FAILED:
       return {

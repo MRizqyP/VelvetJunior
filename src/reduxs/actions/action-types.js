@@ -8,5 +8,7 @@ export const API_REQUEST_FAILED = 'API_REQUEST_FAILED';
 
 export const RETRIEVE_TOKEN = 'RETRIEVE_TOKEN';
 export const RETRIEVE_TOKEN_ASYNC = 'RETRIEVE_TOKEN_ASYNC';
+export const LOGIN_REQ = 'LOGIN_REQ';
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
+export const LOGIN_GAGAL = 'LOGIN_GAGAL';

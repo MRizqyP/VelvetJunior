@@ -5,10 +5,17 @@ export function RETRIEVE_TOKEN() {
     type: types.RETRIEVE_TOKEN,
   };
 }
+export function LOGIN_REQ(payload) {
+  return {
+    type: types.LOGIN_REQ,
+    payload: payload,
+  };
+}
 
-export function LOGIN() {
+export function LOGIN(payload) {
   return {
     type: types.LOGIN,
+    payload: payload,
   };
 }
 

@@ -11,6 +11,11 @@ export default StyleSheet.create({
     marginRight: 16,
     marginTop: 80,
   },
+  formBox: {
+    flex: 1,
+    padding: 16,
+    backgroundColor: 'white',
+  },
   textCard: {
     fontSize: 12,
     color: '#AAAAAA',

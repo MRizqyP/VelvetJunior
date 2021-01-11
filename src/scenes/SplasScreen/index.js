@@ -46,7 +46,7 @@ function Login({navigation}) {
         <LottieView
           source={require('../../assets/loadingani.json')}
           autoPlay
-          style={{marginTop: 70}}
+          style={{height: 15, marginTop: 10}}
           loop
         />
       </View>

@@ -39,4 +39,11 @@ export default StyleSheet.create({
     borderBottomColor: '#D8D8D8',
     paddingBottom: 5,
   },
+  actionError: {
+    flexDirection: 'row',
+    marginTop: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E02020',
+    paddingBottom: 5,
+  },
 });
