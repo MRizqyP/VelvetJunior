@@ -1,5 +1,12 @@
 import React from 'react';
-import {Button, TouchableOpacity, Text, Alert, View} from 'react-native';
+import {
+  Button,
+  TouchableOpacity,
+  Text,
+  Alert,
+  View,
+  LogBox,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
 import Laporan from '../scenes/Laporan';
@@ -7,6 +14,7 @@ import Berhasil from '../scenes/Berhasil';
 import LaporanSalesOrder from '../scenes/LaporanSalesOrder';
 export default function StackChat({navigation, route}) {
   const Laporans = createStackNavigator();
+  LogBox.ignoreAllLogs();
   if (route.state && route.state.index > 0) {
     navigation.setOptions({tabBarVisible: false});
   } else {

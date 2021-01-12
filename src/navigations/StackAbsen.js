@@ -1,12 +1,15 @@
 import React from 'react';
-import {Button, TouchableOpacity, Text, Alert, View} from 'react-native';
+import {TouchableOpacity, Text, LogBox} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
 import Absen from '../scenes/Absen';
 import AbsenKeluar from '../scenes/AbsenKeluar';
+import AbsenMasuk from '../scenes/AbsenMasuk';
+import DetailAbsenMasuk from '../scenes/DetailAbsenMasuk';
 import RiwayatAbsen from '../scenes/RiwayatAbsen';
 export default function StackChat({navigation, route}) {
   const Absens = createStackNavigator();
+  LogBox.ignoreAllLogs();
   if (route.state && route.state.index > 0) {
     navigation.setOptions({tabBarVisible: false});
   } else {
@@ -31,7 +34,8 @@ export default function StackChat({navigation, route}) {
             </Text>
           ),
           headerRight: () => (
-            <TouchableOpacity onPress={() => navigation.navigate('Riwayat')}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Riwayat Kehadiran')}>
               <Icon
                 name="clock"
                 color={'white'}
@@ -54,7 +58,27 @@ export default function StackChat({navigation, route}) {
         }}
       />
       <Absens.Screen
-        name="Riwayat"
+        name="Absen Masuk"
+        component={AbsenMasuk}
+        options={{
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: '#51C9C2',
+          },
+        }}
+      />
+      <Absens.Screen
+        name="Detail Absen Masuk"
+        component={DetailAbsenMasuk}
+        options={{
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: '#51C9C2',
+          },
+        }}
+      />
+      <Absens.Screen
+        name="Riwayat Kehadiran"
         component={RiwayatAbsen}
         options={{
           headerTintColor: 'white',

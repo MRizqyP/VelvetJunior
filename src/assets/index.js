@@ -25,6 +25,8 @@ const images = {
   npwp: require('../assets/images/npwp.jpg'),
   img_visiting_toko: require('../assets/images/img_visiting_toko.png'),
   img_absen_default: require('../assets/images/img_absen_default.png'),
+  img_jam_pulang: require('../assets/images/img_jam_pulang.png'),
+  dummy: require('../assets/images/dummy.jpg'),
   //   backgroundlogin : require('../assets/images/backgroundlogin.png'),
 };
 

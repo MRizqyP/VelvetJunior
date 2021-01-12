@@ -20,9 +20,10 @@ import Button from '../../components/Button';
 import Dashed from '../../components/LineDashed';
 import {KategoriProduk} from './components/modals/KategoriProduk';
 import {
+  FONT_BOLD_10,
   FONT_BOLD_14,
   FONT_BOLD_16,
-  FONT_SIZE_14,
+  FONT_REGULAR_14,
 } from '../../styles/typography';
 function Dashboard({navigation}) {
   var screenWidth = Dimensions.get('window').width;
@@ -85,31 +86,26 @@ function Dashboard({navigation}) {
           Kunjungan Hari Ini
         </Text>
         <Dashed />
-        <View style={{justifyContent: 'center', alignItems: 'center'}}>
+        {/* <View style={{justifyContent: 'center', alignItems: 'center'}}>
           <Image
             source={Images.img_visiting_toko}
             style={{width: screenWidth / 2, height: screenHeight / 4}}
           />
-          <Text style={[FONT_SIZE_14, {color: '#AAAAAA'}]}>
+          <Text style={[FONT_REGULAR_14, {color: '#AAAAAA'}]}>
             Anda belum melakukan kunjungan hari ini{' '}
           </Text>
-          <Button text={'Buat Kunjungan'} onPress={onOpen} />
-        </View>
-        {/* <View style={styles.boxInfo}>
-          <View style={{margin: 16}}>
-            <Text style={styles.textTitle}>Kehadiran Hari Ini</Text>
-            <Dashed />
+          <Button
+            text={'Buat Kunjungan'}
+            onPress={() => navigation.navigate('Kunjungan Baru')}
+          />
+        </View> */}
+        <View style={styles.boxInfo}>
+          <View style={{padding: 16}}>
             <View style={{flexDirection: 'row', marginTop: 15}}>
-              <Feather
-                name="arrow-up-circle"
-                color="green"
-                size={20}
-                style={styles.backgroundArrowGreen}
-              />
+              <Feather name="shopping-cart" color="#F18F01" size={20} />
               <View style={{marginLeft: 10, flex: 1}}>
-                <Text style={{color: '#99C324'}}>Absen Masuk</Text>
-                <Text style={{marginTop: 10}}>
-                  Sedang mengirimkan barang di Toko Indah Busana
+                <Text style={[FONT_BOLD_14, {color: 'black'}]}>
+                  Nerby Baby Shop
                 </Text>
                 <View
                   style={{
@@ -117,58 +113,36 @@ function Dashboard({navigation}) {
                     justifyContent: 'space-between',
                     marginTop: 10,
                   }}>
-                  <Text style={styles.textSub}>Sen , 30 November</Text>
-                  <Text style={styles.textSub}>08:32 AM</Text>
+                  <View>
+                    <Text style={[FONT_BOLD_10, {color: '#AAAAAA'}]}>
+                      Tanggal
+                    </Text>
+                    <Text style={FONT_REGULAR_14}>11 Des 2020</Text>
+                  </View>
+                  <View>
+                    <Text style={[FONT_BOLD_10, {color: '#6BC60B'}]}>
+                      Check In
+                    </Text>
+                    <Text style={FONT_REGULAR_14}>10:30 AM</Text>
+                  </View>
+                  <View>
+                    <Text style={[FONT_BOLD_10, {color: '#E02020'}]}>
+                      Check Out
+                    </Text>
+                    <Text style={FONT_REGULAR_14}>11:30 AM</Text>
+                  </View>
                 </View>
               </View>
-            </View>
-            <Dashed />
-            <View style={{flexDirection: 'row', marginTop: 15}}>
-              <View
-                style={{
-                  padding: 30,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                <Feather
-                  name="arrow-down-circle"
-                  color="red"
-                  size={20}
-                  style={styles.backgroundArrowRed}
-                />
-                <Text style={{fontSize: 11, color: '#AAAAAA', marginTop: 10}}>
-                  Anda belum melakukan absen keluar hari ini
-                </Text>
-              </View>
-
-              <View style={{marginLeft: 10, flex: 1}}>
-              <View
-                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                <Text style={{color: '#E02020'}}>Absen Keluar</Text>
-                <View style={styles.waitbox}>
-                  <Text style={{fontSize: 12, color: 'white'}}>Menunggu</Text>
-                </View>
-              </View>
-              <Text style={{marginTop: 10}}>
-                Sedang mengirimkan barang di Toko Indah Busana
-              </Text>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  marginTop: 10,
-                }}>
-                <Text style={styles.textSub}>Sen , 30 November</Text>
-                <Text style={styles.textSub}>08:32 AM</Text>
-              </View>
-            </View>
             </View>
           </View>
-        </View> */}
+        </View>
+        <View style={{justifyContent: 'center', alignItems: 'center'}}>
+          <Button text={'Check Out Kunjungan'} onPress={onOpen} />
+        </View>
       </View>
       <View style={[styles.formBox, {marginTop: 10}]}>
         <Text style={[FONT_BOLD_16, {marginBottom: 10}]}>
-          Kunjungan Hari Ini
+          Kehadiran Hari Ini
         </Text>
         <Dashed />
         {/* <View style={{justifyContent: 'center', alignItems: 'center'}}>

@@ -23,8 +23,8 @@ export default StyleSheet.create({
     fontWeight: '200',
   },
   boxInfo: {
-    width: 320,
-    height: 240,
+    // width: 320,
+    // height: 240,
     backgroundColor: 'white',
     marginLeft: 16,
     marginRight: 16,

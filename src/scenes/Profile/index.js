@@ -10,6 +10,7 @@ import {
 import Images from '../../assets';
 import styles from './styles';
 import jwt_decode from 'jwt-decode';
+import Dashed from '../../components/LineDashed';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as appActions from '../../reduxs/actions';
@@ -60,7 +61,7 @@ function Profile(props) {
             <Text style={styles.textTitle}>NIK</Text>
             <Text style={styles.textsubTitle}>10000299388432</Text>
           </View>
-          <View style={styles.line}></View>
+          <Dashed />
           <View
             style={{
               flexDirection: 'row',
@@ -70,7 +71,7 @@ function Profile(props) {
             <Text style={styles.textTitle}>Email</Text>
             <Text style={styles.textsubTitle}>rizqy.pratama@bts.id</Text>
           </View>
-          <View style={styles.line}></View>
+          <Dashed />
           <View
             style={{
               flexDirection: 'row',
@@ -80,7 +81,7 @@ function Profile(props) {
             <Text style={styles.textTitle}>No.Telepon</Text>
             <Text style={styles.textsubTitle}>+62 811 2228 3744</Text>
           </View>
-          <View style={styles.line}></View>
+          <Dashed />
           <View
             style={{
               flexDirection: 'row',
@@ -90,7 +91,7 @@ function Profile(props) {
             <Text style={styles.textTitle}>Jenis Kelamin</Text>
             <Text style={styles.textsubTitle}>Laki - Laki</Text>
           </View>
-          <View style={styles.line} />
+          <Dashed />
           <View
             style={{
               flexDirection: 'row',
@@ -103,6 +104,18 @@ function Profile(props) {
               <Text style={{color: '#F18A04', fontSize: 13}}>
                 Ganti Kata Sandi
               </Text>
+            </TouchableOpacity>
+          </View>
+          <Dashed />
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              marginTop: 10,
+            }}>
+            <Text style={styles.textTitle}>Ganti PIN</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Ganti Pin')}>
+              <Text style={{color: '#F18A04', fontSize: 13}}>Ganti PIN</Text>
             </TouchableOpacity>
           </View>
         </View>

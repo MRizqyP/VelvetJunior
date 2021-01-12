@@ -1,5 +1,12 @@
 import React from 'react';
-import {Button, TouchableOpacity, Text, Alert, View} from 'react-native';
+import {
+  Button,
+  TouchableOpacity,
+  Text,
+  Alert,
+  View,
+  LogBox,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
 import PurchaseOrder from '../scenes/PurchaseOrder';
@@ -9,6 +16,7 @@ import Berhasil from '../scenes/Berhasil';
 import GantiAlamat from '../scenes/GantiAlamat';
 export default function StackPurchaseOrders({navigation, route}) {
   const PurchaseOrders = createStackNavigator();
+  LogBox.ignoreAllLogs();
   if (route.state && route.state.index > 0) {
     navigation.setOptions({tabBarVisible: false});
   } else {

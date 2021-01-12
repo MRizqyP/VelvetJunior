@@ -1,11 +1,12 @@
 import React from 'react';
-import {Button, TouchableOpacity, Text, Alert, View} from 'react-native';
+import {Button, TouchableOpacity, Text, LogBox} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
 import Chat from '../scenes/Percakapan';
 import Chatting from '../scenes/ListPercakapan';
 export default function StackChat({navigation, route}) {
   const Chats = createStackNavigator();
+  LogBox.ignoreAllLogs();
   if (route.state && route.state.index > 0) {
     navigation.setOptions({tabBarVisible: false});
   } else {

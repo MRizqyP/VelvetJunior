@@ -62,6 +62,11 @@ export const FONT_MEDIUM_12 = {
   fontSize: FONT_SIZE_12,
   fontWeight: FONT_WEIGHT_REGULAR,
 };
+export const FONT_BOLD_10 = {
+  fontFamily: FONT_FAMILY_BOLD,
+  fontSize: FONT_SIZE_10,
+  fontWeight: FONT_WEIGHT_BOLD,
+};
 
 export const FONT_BOLD_12 = {
   fontFamily: FONT_FAMILY_BOLD,

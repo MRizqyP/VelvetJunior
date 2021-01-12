@@ -33,7 +33,7 @@ export default StyleSheet.create({
   },
   boxInfo: {
     // flex: 1,
-    marginTop: 30,
+    marginTop: 20,
     backgroundColor: 'white',
     marginLeft: 16,
     marginRight: 16,

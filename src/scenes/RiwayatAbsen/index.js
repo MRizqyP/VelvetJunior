@@ -9,7 +9,13 @@ import {
 } from 'react-native';
 import Images from '../../assets';
 import styles from './styles';
+import Dashed from '../../components/LineDashed';
 import Feather from 'react-native-vector-icons/Feather';
+import {
+  FONT_BOLD_14,
+  FONT_BOLD_16,
+  FONT_REGULAR_10,
+} from '../../styles/typography';
 function RiwayatAbsen({navigation}) {
   var screenWidth = Dimensions.get('window').width;
   var screenHeight = Dimensions.get('window').height / 4;
@@ -20,110 +26,210 @@ function RiwayatAbsen({navigation}) {
         style={{width: screenWidth, height: screenHeight, position: 'absolute'}}
       />
       <View style={[styles.boxInfo, {marginTop: 70}]}>
-        <View style={{margin: 16}}>
-          <View style={{flexDirection: 'row'}}>
-            <Feather
-              name="arrow-up-circle"
-              color="green"
-              size={20}
-              style={styles.backgroundArrowGreen}
-            />
-            <View style={{marginLeft: 10, flex: 1}}>
-              <Text style={{color: '#99C324'}}>Absen Masuk</Text>
-              <Text style={{marginTop: 10}}>
-                Sedang mengirimkan barang di Toko Indah Busana
-              </Text>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  marginTop: 10,
-                }}>
-                <Text style={styles.textSub}>Sen , 30 November</Text>
-                <Text style={styles.textSub}>08:32 AM</Text>
+        <View style={{margin: 18}}>
+          <Text style={FONT_BOLD_16}>Jum, 27 November 2020</Text>
+          <Dashed />
+          <View style={{flexDirection: 'row', marginTop: 10}}>
+            <View style={{flexDirection: 'row', flex: 1}}>
+              <Feather
+                name="arrow-up-circle"
+                color="green"
+                size={20}
+                style={styles.backgroundArrowGreen}
+              />
+              <View style={{marginLeft: 10}}>
+                <Text style={[FONT_BOLD_14, {color: '#6BC60B'}]}>
+                  Absen Masuk
+                </Text>
+                <Text
+                  style={[FONT_REGULAR_10, {color: '#F18F01', marginTop: 5}]}>
+                  08:27 AM
+                </Text>
               </View>
             </View>
-          </View>
-          <View style={styles.line} />
-          <View style={{flexDirection: 'row', marginTop: 15}}>
-            <Feather
-              name="arrow-down-circle"
-              color="red"
-              size={20}
-              style={styles.backgroundArrowRed}
-            />
-
-            <View style={{marginLeft: 10, flex: 1}}>
-              <View
-                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                <Text style={{color: '#E02020'}}>Absen Keluar</Text>
-              </View>
-              <Text style={{marginTop: 10}}>
-                Sedang mengirimkan barang di Toko Indah Busana
-              </Text>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  marginTop: 10,
-                }}>
-                <Text style={styles.textSub}>Sen , 30 November</Text>
-                <Text style={styles.textSub}>08:32 AM</Text>
+            <View style={{flexDirection: 'row', flex: 1}}>
+              <Feather
+                name="arrow-down-circle"
+                color="red"
+                size={20}
+                style={styles.backgroundArrowRed}
+              />
+              <View style={{marginLeft: 10}}>
+                <Text style={[FONT_BOLD_14, {color: '#DB5943'}]}>
+                  Absen Keluar
+                </Text>
+                <Text
+                  style={[FONT_REGULAR_10, {color: '#F18F01', marginTop: 5}]}>
+                  05:27 PM
+                </Text>
               </View>
             </View>
           </View>
         </View>
       </View>
-      <View style={styles.boxInfo}>
-        <View style={{margin: 16}}>
-          <View style={{flexDirection: 'row'}}>
-            <Feather
-              name="arrow-up-circle"
-              color="green"
-              size={20}
-              style={styles.backgroundArrowGreen}
-            />
-            <View style={{marginLeft: 10, flex: 1}}>
-              <Text style={{color: '#99C324'}}>Absen Masuk</Text>
-              <Text style={{marginTop: 10}}>
-                Sedang mengirimkan barang di Toko Indah Busana
-              </Text>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  marginTop: 10,
-                }}>
-                <Text style={styles.textSub}>Sen , 30 November</Text>
-                <Text style={styles.textSub}>08:32 AM</Text>
+      <View style={[styles.boxInfo]}>
+        <View style={{margin: 18}}>
+          <Text style={FONT_BOLD_16}>Kam, 26 November 2020</Text>
+          <Dashed />
+          <View style={{flexDirection: 'row', marginTop: 10}}>
+            <View style={{flexDirection: 'row', flex: 1}}>
+              <Feather
+                name="arrow-up-circle"
+                color="green"
+                size={20}
+                style={styles.backgroundArrowGreen}
+              />
+              <View style={{marginLeft: 10}}>
+                <Text style={[FONT_BOLD_14, {color: '#6BC60B'}]}>
+                  Absen Masuk
+                </Text>
+                <Text
+                  style={[FONT_REGULAR_10, {color: '#F18F01', marginTop: 5}]}>
+                  08:27 AM
+                </Text>
+              </View>
+            </View>
+            <View style={{flexDirection: 'row', flex: 1}}>
+              <Feather
+                name="arrow-down-circle"
+                color="red"
+                size={20}
+                style={styles.backgroundArrowRed}
+              />
+              <View style={{marginLeft: 10}}>
+                <Text style={[FONT_BOLD_14, {color: '#DB5943'}]}>
+                  Absen Keluar
+                </Text>
+                <Text
+                  style={[FONT_REGULAR_10, {color: '#F18F01', marginTop: 5}]}>
+                  05:27 PM
+                </Text>
               </View>
             </View>
           </View>
-          <View style={styles.line} />
-          <View style={{flexDirection: 'row', marginTop: 15}}>
-            <Feather
-              name="arrow-down-circle"
-              color="red"
-              size={20}
-              style={styles.backgroundArrowRed}
-            />
-
-            <View style={{marginLeft: 10, flex: 1}}>
-              <View
-                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                <Text style={{color: '#E02020'}}>Absen Keluar</Text>
+        </View>
+      </View>
+      <View style={[styles.boxInfo]}>
+        <View style={{margin: 18}}>
+          <Text style={FONT_BOLD_16}>Rab, 27 November 2020</Text>
+          <Dashed />
+          <View style={{flexDirection: 'row', marginTop: 10}}>
+            <View style={{flexDirection: 'row', flex: 1}}>
+              <Feather
+                name="arrow-up-circle"
+                color="green"
+                size={20}
+                style={styles.backgroundArrowGreen}
+              />
+              <View style={{marginLeft: 10}}>
+                <Text style={[FONT_BOLD_14, {color: '#6BC60B'}]}>
+                  Absen Masuk
+                </Text>
+                <Text
+                  style={[FONT_REGULAR_10, {color: '#F18F01', marginTop: 5}]}>
+                  08:27 AM
+                </Text>
               </View>
-              <Text style={{marginTop: 10}}>
-                Sedang mengirimkan barang di Toko Indah Busana
-              </Text>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  marginTop: 10,
-                }}>
-                <Text style={styles.textSub}>Sen , 30 November</Text>
-                <Text style={styles.textSub}>08:32 AM</Text>
+            </View>
+            <View style={{flexDirection: 'row', flex: 1}}>
+              <Feather
+                name="arrow-down-circle"
+                color="red"
+                size={20}
+                style={styles.backgroundArrowRed}
+              />
+              <View style={{marginLeft: 10}}>
+                <Text style={[FONT_BOLD_14, {color: '#DB5943'}]}>
+                  Absen Keluar
+                </Text>
+                <Text
+                  style={[FONT_REGULAR_10, {color: '#F18F01', marginTop: 5}]}>
+                  05:27 PM
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View style={[styles.boxInfo]}>
+        <View style={{margin: 18}}>
+          <Text style={FONT_BOLD_16}>Sel, 27 November 2020</Text>
+          <Dashed />
+          <View style={{flexDirection: 'row', marginTop: 10}}>
+            <View style={{flexDirection: 'row', flex: 1}}>
+              <Feather
+                name="arrow-up-circle"
+                color="green"
+                size={20}
+                style={styles.backgroundArrowGreen}
+              />
+              <View style={{marginLeft: 10}}>
+                <Text style={[FONT_BOLD_14, {color: '#6BC60B'}]}>
+                  Absen Masuk
+                </Text>
+                <Text
+                  style={[FONT_REGULAR_10, {color: '#F18F01', marginTop: 5}]}>
+                  08:27 AM
+                </Text>
+              </View>
+            </View>
+            <View style={{flexDirection: 'row', flex: 1}}>
+              <Feather
+                name="arrow-down-circle"
+                color="red"
+                size={20}
+                style={styles.backgroundArrowRed}
+              />
+              <View style={{marginLeft: 10}}>
+                <Text style={[FONT_BOLD_14, {color: '#DB5943'}]}>
+                  Absen Keluar
+                </Text>
+                <Text
+                  style={[FONT_REGULAR_10, {color: '#F18F01', marginTop: 5}]}>
+                  05:27 PM
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View style={[styles.boxInfo]}>
+        <View style={{margin: 18}}>
+          <Text style={FONT_BOLD_16}>Sen, 23 November 2020</Text>
+          <Dashed />
+          <View style={{flexDirection: 'row', marginTop: 10}}>
+            <View style={{flexDirection: 'row', flex: 1}}>
+              <Feather
+                name="arrow-up-circle"
+                color="green"
+                size={20}
+                style={styles.backgroundArrowGreen}
+              />
+              <View style={{marginLeft: 10}}>
+                <Text style={[FONT_BOLD_14, {color: '#6BC60B'}]}>
+                  Absen Masuk
+                </Text>
+                <Text
+                  style={[FONT_REGULAR_10, {color: '#F18F01', marginTop: 5}]}>
+                  08:27 AM
+                </Text>
+              </View>
+            </View>
+            <View style={{flexDirection: 'row', flex: 1}}>
+              <Feather
+                name="arrow-down-circle"
+                color="red"
+                size={20}
+                style={styles.backgroundArrowRed}
+              />
+              <View style={{marginLeft: 10}}>
+                <Text style={[FONT_BOLD_14, {color: '#DB5943'}]}>
+                  Absen Keluar
+                </Text>
+                <Text
+                  style={[FONT_REGULAR_10, {color: '#F18F01', marginTop: 5}]}>
+                  05:27 PM
+                </Text>
               </View>
             </View>
           </View>

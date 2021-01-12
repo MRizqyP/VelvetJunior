@@ -1,17 +1,28 @@
 import React from 'react';
-import {Button, TouchableOpacity, Text, Alert, View} from 'react-native';
+import {
+  Button,
+  TouchableOpacity,
+  Text,
+  Alert,
+  View,
+  LogBox,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
 import LaporanSalesOrder from '../scenes/LaporanSalesOrder';
 import Dashboard from '../scenes/Dashboard';
 import Berhasil from '../scenes/Berhasil';
+import CheckIn from '../scenes/Check-In';
+import Notfikasi from '../scenes/Notfikasi';
 export default function StackDashboards({navigation, route}) {
   const Dashboards = createStackNavigator();
-  //   if (route.state && route.state.index > 0) {
-  //     navigation.setOptions({tabBarVisible: false});
-  //   } else {
-  //     navigation.setOptions({tabBarVisible: true});
-  //   }
+  LogBox.ignoreAllLogs();
+  if (route.state && route.state.index > 0) {
+    navigation.setOptions({tabBarVisible: false});
+  } else {
+    navigation.setOptions({tabBarVisible: true});
+  }
   return (
     <Dashboards.Navigator>
       <Dashboards.Screen
@@ -31,7 +42,7 @@ export default function StackDashboards({navigation, route}) {
             </Text>
           ),
           headerRight: () => (
-            <TouchableOpacity onPress={() => console.log('BELL')}>
+            <TouchableOpacity onPress={() => navigation.navigate('Notifikasi')}>
               <Icon
                 name="bell"
                 color={'white'}
@@ -46,6 +57,26 @@ export default function StackDashboards({navigation, route}) {
       <Dashboards.Screen
         name="Laporan Sales Order"
         component={LaporanSalesOrder}
+      />
+      <Dashboards.Screen
+        name="Kunjungan Baru"
+        component={CheckIn}
+        options={{
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: '#51C9C2',
+          },
+        }}
+      />
+      <Dashboards.Screen
+        name="Notifikasi"
+        component={Notfikasi}
+        options={{
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: '#51C9C2',
+          },
+        }}
       />
       <Dashboards.Screen
         name="Berhasil"
