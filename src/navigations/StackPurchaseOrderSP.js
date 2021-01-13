@@ -14,7 +14,7 @@ import POBaru from '../scenes/POBaru';
 import DetailPO from '../scenes/DetailPO';
 import Berhasil from '../scenes/Berhasil';
 import GantiAlamat from '../scenes/GantiAlamat';
-export default function StackPurchaseOrders({navigation, route}) {
+export default function StackPurchaseOrdersSP({navigation, route}) {
   const PurchaseOrders = createStackNavigator();
   LogBox.ignoreAllLogs();
   if (route.state && route.state.index > 0) {
@@ -55,12 +55,16 @@ export default function StackPurchaseOrders({navigation, route}) {
         }}
       />
       <PurchaseOrders.Screen
-        name="Detail Purchase Order"
+        name="Detail Laporan Penjualan"
         component={DetailPO}
         options={{
           headerTintColor: 'white',
           headerStyle: {
             backgroundColor: '#51C9C2',
+          },
+          headerTitleStyle: {
+            fontSize: 17,
+            fontFamily: 'Rubik-Bold',
           },
         }}
       />

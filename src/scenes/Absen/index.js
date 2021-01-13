@@ -60,7 +60,7 @@ function Absen({navigation}) {
                 style={styles.backgroundArrowGreen}
               />
               <Text style={[FONT_BOLD_14, {color: '#6BC60B', marginTop: 5}]}>
-                Absen Masuk
+                Absen Masukqweasd
               </Text>
               <Text style={[FONT_REGULAR_12, {color: '#AAAAAA', marginTop: 5}]}>
                 11 Desember 2020

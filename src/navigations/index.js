@@ -20,11 +20,13 @@ import jwt_decode from 'jwt-decode';
 import GantiKataSandi from '../scenes/GantiKataSandi';
 import {Host, Portal} from 'react-native-portalize';
 import StackProfile from './StackProfile';
-import StackPurchaseOrders from './StackPurchaseOrder';
+import StackPurchaseOrderSP from './StackPurchaseOrderSP';
+import StackPurchaseOrderSM from './StackPurchaseOrderSM';
 import StackChats from './StackChat';
 import StackDashboards from './StackDashboard';
 import StackAbsen from './StackAbsen';
 import StackLaporan from './StackLaporan';
+import StackReportAbsensi from './StackReportAbsensi';
 import LottieView from 'lottie-react-native';
 // import moduleName from '../scenes/SplasScreen'
 const Tabs = createBottomTabNavigator();
@@ -68,7 +70,7 @@ function stackTabsSP() {
 
         <Tabs.Screen
           name="PO"
-          component={StackPurchaseOrders}
+          component={StackPurchaseOrderSP}
           options={{
             tabBarButton: (props) => (
               <TabComponent label="Absen" namaicon="ic_report" {...props} />
@@ -132,7 +134,7 @@ function stackTabsSM() {
 
         <Tabs.Screen
           name="PO"
-          component={StackPurchaseOrders}
+          component={StackPurchaseOrderSM}
           options={{
             tabBarButton: (props) => (
               <TabComponent label="Absen" namaicon="ic_report" {...props} />
@@ -141,7 +143,7 @@ function stackTabsSM() {
         />
         <Tabs.Screen
           name="Chat"
-          component={StackChats}
+          component={StackReportAbsensi}
           options={{
             tabBarButton: (props) => (
               <TabComponent label="home" namaicon="ic_chat" {...props} />

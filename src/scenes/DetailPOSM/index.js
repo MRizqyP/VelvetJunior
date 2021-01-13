@@ -17,10 +17,9 @@ import {useNavigation} from '@react-navigation/native';
 import Header from '../../components/HeaderModal';
 import NumberFormat from 'react-number-format';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
-import Button from '../../components/Button';
+import RadioButton from '../../components/RadioButton';
 import Images from '../../assets';
 import styles from './styles';
-import {FONT_REGULAR_14} from '../../styles/typography';
 
 function DetailPO({navigation, route}) {
   const modalizeRef = useRef(null);
@@ -48,13 +47,13 @@ function DetailPO({navigation, route}) {
   const [fields, setFields] = useState([
     {
       size: 'S',
-      jumlah: '1000',
-      harga: '125000000',
+      jumlah: '100',
+      harga: '5000000',
     },
     {
       size: 'M',
-      jumlah: '1000',
-      harga: '375000000',
+      jumlah: '25',
+      harga: '1500000',
     },
   ]);
 
@@ -74,12 +73,6 @@ function DetailPO({navigation, route}) {
             source={Images.icon_download_pdf}
             style={{width: 25, height: 25}}
           />
-          {/* <Feather
-            name="plus"
-            color={'white'}
-            size={25}
-            style={{paddingRight: 15}}
-          /> */}
         </TouchableOpacity>
       ),
     });
@@ -308,29 +301,15 @@ function DetailPO({navigation, route}) {
             <View
               style={{flexDirection: 'row', justifyContent: 'space-between'}}>
               <View style={{flex: 1}}>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    marginTop: 10,
-                    marginBottom: 15,
-                  }}>
-                  <View style={{flexDirection: 'row'}}>
-                    <Feather
-                      name="shopping-cart"
-                      color={'orange'}
-                      size={25}
-                      style={{marginLeft: 10}}
-                    />
-                    <Text
-                      style={{
-                        fontWeight: 'bold',
-                        marginLeft: 10,
-                        fontSize: 14,
-                      }}>
-                      {namatoko}
-                    </Text>
-                  </View>
+                <Text style={styles.texttitleList}>No.PO</Text>
+                <Text style={{color: 'orange', fontWeight: 'bold'}}>
+                  {nopo}
+                </Text>
+              </View>
+              <View style={{flex: 1}}>
+                <Text style={styles.texttitleList}>Status</Text>
+                <View style={styles.reviewbox}>
+                  <Text style={styles.textStatus}>{status}</Text>
                 </View>
               </View>
             </View>
@@ -342,19 +321,176 @@ function DetailPO({navigation, route}) {
               }}>
               <View style={{flex: 1}}>
                 <Text style={styles.texttitleList}>Tanggal</Text>
-                <Text style={[FONT_REGULAR_14, {color: 'black'}]}>
-                  13 Des 2020
+                <Text style={{color: 'black', fontWeight: 'bold'}}>
+                  13 Des 2022
                 </Text>
               </View>
               <View style={{flex: 1}}>
                 <Text style={styles.texttitleList}>Dibuat Oleh</Text>
-                <Text style={[FONT_REGULAR_14, {color: 'black'}]}>
+                <Text style={{color: 'black', fontWeight: 'bold'}}>
                   Aneta Škodová
                 </Text>
               </View>
             </View>
           </View>
+          <View style={styles.formBox}>
+            <View style={{flexDirection: 'row'}}>
+              <Text style={styles.title}>Toko</Text>
+            </View>
 
+            <View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  marginTop: 10,
+                  marginBottom: 15,
+                }}>
+                <View style={{flexDirection: 'row'}}>
+                  <Feather
+                    name="shopping-cart"
+                    color={'orange'}
+                    size={25}
+                    style={{marginLeft: 10}}
+                  />
+                  <Text
+                    style={{
+                      fontWeight: 'bold',
+                      marginLeft: 10,
+                      fontSize: 14,
+                    }}>
+                    {namatoko}
+                  </Text>
+                </View>
+              </View>
+              <View style={styles.formProduk}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    // backgroundColor: 'red',
+                  }}>
+                  <Text
+                    style={{fontSize: 14, fontWeight: 'bold', marginLeft: 2}}>
+                    Alamat Pengiriman
+                  </Text>
+                </View>
+                <View style={{marginTop: 15}}>
+                  <Text style={[styles.textInfoCus, {color: 'orange'}]}>
+                    Kantor {namatoko}
+                  </Text>
+                  <Text style={styles.textInfoCusSub}>
+                    Jl. Cibeurem No.56a Bandung
+                  </Text>
+                </View>
+              </View>
+              <View style={[styles.formBoxProduk, {marginTop: 20}]}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    flex: 1.5,
+                    justifyContent: 'space-between',
+                  }}>
+                  <View>
+                    <Text style={[styles.title, {color: '#51C9C2'}]}>
+                      Informasi Pelanggan
+                    </Text>
+                  </View>
+                  {!detail ? (
+                    <TouchableOpacity onPress={() => setDetail(true)}>
+                      <Feather
+                        name="chevron-down"
+                        color={'#51C9C2'}
+                        size={25}
+                        style={{paddingLeft: 15}}
+                      />
+                    </TouchableOpacity>
+                  ) : (
+                    <TouchableOpacity onPress={() => setDetail(false)}>
+                      <Feather
+                        name="chevron-up"
+                        color={'#51C9C2'}
+                        size={25}
+                        style={{paddingLeft: 15}}
+                      />
+                    </TouchableOpacity>
+                  )}
+                </View>
+                {detail ? (
+                  <View style={{marginTop: 10}}>
+                    <View style={{flex: 1}}>
+                      <Text style={styles.textInfoCus}>Alamat</Text>
+                      <Text style={styles.textInfoCusSub}>
+                        Jl. Abdurahman Saleh No.2a Bandung
+                      </Text>
+                    </View>
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        marginTop: 10,
+                      }}>
+                      <View style={{flex: 1}}>
+                        <Text style={styles.textInfoCus}>Nomor Telepon</Text>
+                        <Text style={styles.textInfoCusSub}>022-6676234</Text>
+                      </View>
+                      <View style={{flex: 1}}>
+                        <Text style={styles.textInfoCus}>Email</Text>
+                        <Text style={styles.textInfoCusSub}>
+                          admin@babyshop.com
+                        </Text>
+                      </View>
+                    </View>
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        marginTop: 10,
+                      }}>
+                      <View style={{flex: 1}}>
+                        <Text style={styles.textInfoCus}>PIC</Text>
+                        <Text style={styles.textInfoCusSub}>
+                          Dusya Sigachyova
+                        </Text>
+                      </View>
+                      <View style={{flex: 1}}>
+                        <Text style={styles.textInfoCus}>PIC</Text>
+                        <Text style={styles.textInfoCusSub}>081122223432</Text>
+                      </View>
+                    </View>
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        marginTop: 10,
+                      }}>
+                      <View style={{flex: 1}}>
+                        <Text style={styles.textInfoCus}>No. NPWP</Text>
+                        <Text style={styles.textInfoCusSub}>8098733483223</Text>
+                      </View>
+                    </View>
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        marginTop: 10,
+                      }}>
+                      <View style={{flex: 1}}>
+                        <Text style={styles.textInfoCus}>Photo NPWP</Text>
+                        <Image
+                          source={Images.npwp}
+                          style={{
+                            height: 170,
+                            width: '100%',
+                            resizeMode: 'contain',
+                            borderRadius: 8,
+                            position: 'relative',
+                            flexWrap: 'wrap',
+                          }}
+                        />
+                      </View>
+                    </View>
+                  </View>
+                ) : null}
+              </View>
+            </View>
+          </View>
           <View style={[styles.formBox, {marginTop: 10}]}>
             <Text style={styles.title}>List Pesanan</Text>
             <View
@@ -432,7 +568,7 @@ function DetailPO({navigation, route}) {
                           <View
                             style={{flexDirection: 'row', marginTop: 10}}
                             key={`${field}-${idx}`}>
-                            <View style={{flex: 1, paddingRight: 12}}>
+                            <View style={{flex: 1.5, paddingRight: 12}}>
                               <Text style={styles.texttitleList}>Size</Text>
                               <Text
                                 style={[
@@ -514,12 +650,12 @@ function DetailPO({navigation, route}) {
               ) : null}
             </View>
           </View>
-          {/* <View style={[styles.formBox, {marginTop: 10}]}>
+          <View style={[styles.formBox, {marginTop: 10}]}>
             <Text style={styles.title}>Pembayaran</Text>
             <View>
               <RadioButton PROP={PROP} />
             </View>
-          </View> */}
+          </View>
         </View>
       </ScrollView>
 
@@ -535,13 +671,13 @@ function DetailPO({navigation, route}) {
               flexDirection: 'row',
               justifyContent: 'space-between',
             }}>
-            <Text style={styles.textTotal}>Total Produk</Text>
+            <Text style={styles.textTotal}>PPN</Text>
             {detail ? (
               <NumberFormat
-                suffix={' Pcs'}
+                suffix={'%'}
                 displayType={'text'}
                 decimalScale={2}
-                value={total}
+                value={0.1 * 100}
                 renderText={(value) => (
                   <Text style={[styles.textTotal, {fontWeight: 'bold'}]}>
                     {value}{' '}
@@ -549,9 +685,7 @@ function DetailPO({navigation, route}) {
                 )}
               />
             ) : (
-              <Text style={[styles.textTotal, {fontWeight: 'bold'}]}>
-                {total}
-              </Text>
+              <Text style={[styles.textTotal, {fontWeight: 'bold'}]}>10 %</Text>
             )}
           </View>
 
@@ -592,7 +726,16 @@ function DetailPO({navigation, route}) {
             flexDirection: 'row',
             justifyContent: 'center',
           }}>
-          <Button text={'Ubah'} />
+          <TouchableOpacity onPress={() => modalizeRef2.current?.open()}>
+            <View style={styles.buttonRevisi}>
+              <Text style={styles.textBatal}>Revisi</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => modalizeRef1.current?.open()}>
+            <View style={styles.buttonDisetujui}>
+              <Text style={styles.textSimpan}>Disetujui</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
     </View>

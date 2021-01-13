@@ -6,6 +6,7 @@ const images = {
   icon2: require('../assets/images/ic_chat.png'),
   icon3: require('../assets/images/ic_kehadiran.png'),
   icon4: require('../assets/images/pasfoto.jpg'),
+  icon_download_pdf: require('../assets/images/ic_download_pdf.png'),
 
   img_bg_awan: require('../assets/images/img_bg_awan.png'),
   img_bg_splash: require('../assets/images/img_bg_splash_screen.png'),

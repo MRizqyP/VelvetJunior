@@ -5,7 +5,7 @@ export default function HeaderModal() {
   return (
     <View style={styles.header}>
       <View style={styles.panelHeader}>
-        <View style={styles.panelHandle} />
+        {/* <View style={styles.panelHandle} /> */}
       </View>
     </View>
   );
@@ -19,8 +19,8 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     shadowOpacity: 0.4,
     paddingTop: 20,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    borderTopLeftRadius: 40,
+    borderTopRightRadius: 40,
   },
   panelHeader: {
     alignItems: 'center',
