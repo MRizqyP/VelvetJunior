@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   View,
   Text,
@@ -17,11 +17,14 @@ import {
   FONT_BOLD_12,
   FONT_BOLD_14,
   FONT_BOLD_16,
+  FONT_BOLD_18,
   FONT_REGULAR_10,
   FONT_REGULAR_12,
   FONT_REGULAR_14,
 } from '../../styles/typography';
-function Absen({navigation}) {
+
+import {useNavigation} from '@react-navigation/native';
+function DetailRiawaytAbsenSM({navigation}) {
   var screenWidth = Dimensions.get('window').width;
   var screenHeight = Dimensions.get('window').height;
 
@@ -35,7 +38,7 @@ function Absen({navigation}) {
           position: 'absolute',
         }}
       />
-      <View style={styles.headerBox}>
+      <View style={[styles.headerBox, {marginTop: screenWidth / 4}]}>
         <View
           style={{
             flexDirection: 'row',
@@ -115,7 +118,7 @@ function Absen({navigation}) {
         </View>
       </View>
       <View style={{padding: 18}}>
-        <Text style={FONT_BOLD_16}>Kunjungan Hari Ini</Text>
+        <Text style={FONT_BOLD_16}>Kunjungan</Text>
         <Dashed />
       </View>
       <ScrollView>
@@ -270,18 +273,8 @@ function Absen({navigation}) {
           </View>
         </View>
       </ScrollView>
-      {/* <View
-        style={{justifyContent: 'center', alignItems: 'center', marginTop: 30}}>
-        <Image
-          source={Images.img_visiting_toko}
-          style={{width: screenWidth / 2, height: screenHeight / 4}}
-        />
-        <Text style={[FONT_REGULAR_14, {color: '#AAAAAA'}]}>
-          Anda belum melakukan kunjungan hari ini
-        </Text>
-      </View> */}
     </View>
   );
 }
 
-export default Absen;
+export default DetailRiawaytAbsenSM;

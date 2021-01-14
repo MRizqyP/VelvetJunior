@@ -123,7 +123,10 @@ function Login(props) {
             </Text>
           </TouchableOpacity>
         </View>
-        <Button onPress={masuk} text={'Masuk'} />
+        <Button
+          onPress={() => navigation.navigate('DashboardSM')}
+          text={'Masuk'}
+        />
       </View>
 
       <ImageBackground
