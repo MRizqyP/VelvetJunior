@@ -44,6 +44,8 @@ function Login(props) {
       navigation.navigate('DashboardSP');
     } else if (decoded.role.name === 'Sales Manager') {
       navigation.navigate('DashboardSM');
+    } else if (decoded.role.name === 'SPG') {
+      navigation.navigate('DashboardSPG');
     }
   }
 
@@ -123,10 +125,7 @@ function Login(props) {
             </Text>
           </TouchableOpacity>
         </View>
-        <Button
-          onPress={() => navigation.navigate('DashboardSM')}
-          text={'Masuk'}
-        />
+        <Button onPress={masuk} text={'Masuk'} />
       </View>
 
       <ImageBackground

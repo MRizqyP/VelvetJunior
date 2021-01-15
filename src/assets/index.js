@@ -22,6 +22,7 @@ const images = {
   img_group_chat: require('../assets/images/img_group_chat.png'),
   img_keluar_dari_halaman: require('../assets/images/img_keluar_dari_halaman.png'),
   img_list_pesanan: require('../assets/images/img_list_pesanan.png'),
+  img_laporan: require('../assets/images/img_laporan.png'),
   kode_otp: require('../assets/images/kode_otp.png'),
   npwp: require('../assets/images/npwp.jpg'),
   img_visiting_toko: require('../assets/images/img_visiting_toko.png'),

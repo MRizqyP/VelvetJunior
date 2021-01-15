@@ -17,7 +17,7 @@ export default function LineDashed({flexDirectionvalue, heightvalue, color}) {
       }}
       dashGap={3}
       dashLength={6}
-      dashColor={color ? color : '#AAAAAA'}
+      dashColor={color ? color : '#D9D9D9'}
     />
   );
 }

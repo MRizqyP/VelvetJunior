@@ -27,8 +27,10 @@ import StackDashboards from './StackDashboard';
 import StackAbsen from './StackAbsen';
 import StackLaporan from './StackLaporan';
 import StackReportAbsensi from './StackReportAbsensi';
-import LottieView from 'lottie-react-native';
-// import moduleName from '../scenes/SplasScreen'
+
+import StackLaporanSPG from './StackSPG/StackLaporan';
+import StackPurchaseOrderSPG from './StackSPG/StackPurchaseOrderSPG';
+import StackAbsenSPG from './StackSPG/StackAbsen';
 const Tabs = createBottomTabNavigator();
 const Logins = createStackNavigator();
 
@@ -164,16 +166,140 @@ function stackTabsSM() {
     </Host>
   );
 }
+function stackTabsSPG() {
+  return (
+    <Host>
+      <Tabs.Navigator
+        tabBarOptions={{
+          style: {
+            shadowColor: '#000',
+            shadowOpacity: 0.1,
+            shadowRadius: 20,
+            shadowOffset: {width: 0, height: 0},
+          },
+          keyboardHidesTabBar: true,
+        }}>
+        <Tabs.Screen
+          name="Dashboard"
+          component={StackDashboards}
+          options={{
+            tabBarButton: (props) => (
+              <TabComponent label="home" namaicon="dashboard" {...props} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="Laporan"
+          component={StackLaporanSPG}
+          options={{
+            tabBarButton: (props) => (
+              <TabComponent label="home" namaicon="ic_kehadiran" {...props} />
+            ),
+          }}
+        />
+
+        <Tabs.Screen
+          name="PO"
+          component={StackPurchaseOrderSPG}
+          options={{
+            tabBarButton: (props) => (
+              <TabComponent label="Absen" namaicon="ic_report" {...props} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="Chat"
+          component={StackAbsenSPG}
+          options={{
+            tabBarButton: (props) => (
+              <TabComponent label="home" namaicon="ic_chat" {...props} />
+            ),
+          }}
+        />
+
+        <Tabs.Screen
+          name="Profile"
+          component={StackProfile}
+          options={{
+            tabBarButton: (props) => (
+              <TabComponent label="home" namaicon="pasfoto" {...props} />
+            ),
+          }}
+        />
+      </Tabs.Navigator>
+    </Host>
+  );
+}
+
+function stackTabsPPIC() {
+  return (
+    <Host>
+      <Tabs.Navigator
+        tabBarOptions={{
+          style: {
+            shadowColor: '#000',
+            shadowOpacity: 0.1,
+            shadowRadius: 20,
+            shadowOffset: {width: 0, height: 0},
+          },
+          keyboardHidesTabBar: true,
+        }}>
+        <Tabs.Screen
+          name="Dashboard"
+          component={StackDashboards}
+          options={{
+            tabBarButton: (props) => (
+              <TabComponent label="home" namaicon="dashboard" {...props} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="Laporan"
+          component={StackLaporan}
+          options={{
+            tabBarButton: (props) => (
+              <TabComponent label="home" namaicon="ic_kehadiran" {...props} />
+            ),
+          }}
+        />
+
+        <Tabs.Screen
+          name="PO"
+          component={StackPurchaseOrderSM}
+          options={{
+            tabBarButton: (props) => (
+              <TabComponent label="Absen" namaicon="ic_report" {...props} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="Chat"
+          component={StackAbsen}
+          options={{
+            tabBarButton: (props) => (
+              <TabComponent label="home" namaicon="ic_chat" {...props} />
+            ),
+          }}
+        />
+
+        <Tabs.Screen
+          name="Profile"
+          component={StackProfile}
+          options={{
+            tabBarButton: (props) => (
+              <TabComponent label="home" namaicon="pasfoto" {...props} />
+            ),
+          }}
+        />
+      </Tabs.Navigator>
+    </Host>
+  );
+}
 
 function Routes(props) {
   const {state, actions} = props;
   const [role, setRole] = useState('');
-  //   if (state.login.userToken) {
-  //     var decoded = jwt_decode(state.login.userToken);
-  //     setRole(decoded.role.name);
-  //   }
 
-  //   console.log(role);
   useEffect(() => {
     setTimeout(async () => {
       let userToken;
@@ -231,6 +357,13 @@ function Routes(props) {
         <Logins.Screen
           name="DashboardSM"
           component={stackTabsSM}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Logins.Screen
+          name="DashboardSPG"
+          component={stackTabsSPG}
           options={{
             headerShown: false,
           }}

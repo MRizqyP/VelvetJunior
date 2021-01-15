@@ -9,11 +9,13 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
-import LaporanDisplayRak from '../scenes/LaporanDisplayRak';
-import DetailDisplayRak from '../scenes/DetailDisplayRak';
-import RiwayatDisplayRak from '../scenes/RiwayatDisplayRak';
-import Berhasil from '../scenes/Berhasil';
-import LaporanSalesOrder from '../scenes/LaporanSalesOrder';
+import LaporanDisplay from '../../scenes/SPG/LaporanDisplay';
+import KondisiAkhirDisplay from '../../scenes/SPG/KondisiAkhirDisplay';
+import DetailKondisiAkhirDisplay from '../../scenes/SPG/DetailKondisiAkhirDisplay';
+
+import RiwayatDisplayRak from '../../scenes/RiwayatDisplayRak';
+import Berhasil from '../../scenes/Berhasil';
+import LaporanSalesOrder from '../../scenes/LaporanSalesOrder';
 export default function StackLaporan({navigation, route}) {
   const Laporans = createStackNavigator();
   LogBox.ignoreAllLogs();
@@ -26,18 +28,16 @@ export default function StackLaporan({navigation, route}) {
     <Laporans.Navigator>
       <Laporans.Screen
         name="Laporan"
-        component={LaporanDisplayRak}
+        component={LaporanDisplay}
         options={{
           headerTintColor: 'white',
-          headerStyle: {
-            justifyContent: 'center',
-          },
+
           headerTransparent: true,
           headerTitle: '',
           headerRight: () => (
             <TouchableOpacity onPress={() => console.log('WAW')}>
               <Icon
-                name="search"
+                name="clock"
                 color={'#fff'}
                 size={25}
                 style={{paddingRight: 15}}
@@ -52,14 +52,25 @@ export default function StackLaporan({navigation, route}) {
                 fontWeight: 'bold',
                 color: 'white',
               }}>
-              Laporan Display Rak
+              Laporan Display
             </Text>
           ),
         }}
       />
       <Laporans.Screen
-        name="DetailDisplayRak"
-        component={DetailDisplayRak}
+        name="Kondisi Akhir"
+        component={KondisiAkhirDisplay}
+        options={{
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: '#51C9C2',
+          },
+          headerTitle: 'Kondisi Akhir Display',
+        }}
+      />
+      <Laporans.Screen
+        name="DetailKondisiAkhirDisplay"
+        component={DetailKondisiAkhirDisplay}
         options={{
           headerTintColor: 'white',
           headerStyle: {
@@ -84,6 +95,16 @@ export default function StackLaporan({navigation, route}) {
           },
         }}
       />
+      {/* <Laporans.Screen
+        name="Laporan Penjualan"
+        component={LaporanPenjualan}
+        options={{
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: '#51C9C2',
+          },
+        }}
+      /> */}
       <Laporans.Screen
         name="Riwayat Display Rak"
         component={RiwayatDisplayRak}
@@ -92,7 +113,6 @@ export default function StackLaporan({navigation, route}) {
           headerStyle: {
             backgroundColor: '#51C9C2',
             // marginLeft: 30,
-            justifyContent: 'center',
           },
           // headerTransparent: true,
         }}
