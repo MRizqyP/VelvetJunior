@@ -13,10 +13,9 @@ import {
 import {Modalize} from 'react-native-modalize';
 import {Host, Portal} from 'react-native-portalize';
 import Feather from 'react-native-vector-icons/Feather';
-import Header from '../../../components/HeaderModal';
-import Dashed from '../../../components/LineDashed';
+import Dashed from '../../components/LineDashed';
 import {useNavigation} from '@react-navigation/native';
-import Images from '../../../assets';
+import Images from '../../assets';
 import styles from './styles';
 import {Filter} from './components/modals/Filter';
 import {KategoriProduk} from './components/modals/KategoriProduk';
@@ -25,7 +24,7 @@ import {
   FONT_BOLD_18,
   FONT_BOLD_20,
   FONT_BOLD_22,
-} from '../../../styles/typography';
+} from '../../styles/typography';
 
 function LaporanPenjualan({navigation}) {
   const width = Dimensions.get('window').width;

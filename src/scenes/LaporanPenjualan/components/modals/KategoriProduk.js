@@ -2,9 +2,9 @@ import React, {useRef, forwardRef} from 'react';
 import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import {Modalize} from 'react-native-modalize';
 import styles from '../../styles';
-import Dashed from '../../../../../components/LineDashed';
-import Header from '../../../../../components/HeaderModal';
-import {useCombinedRefs} from '../../../../../utils/use-combined-refs';
+import Dashed from '../../../../components/LineDashed';
+import Header from '../../../../components/HeaderModal';
+import {useCombinedRefs} from '../../../../utils/use-combined-refs';
 import Feather from 'react-native-vector-icons/Feather';
 export const KategoriProduk = forwardRef((props, ref) => {
   const modalizeRef = useRef(null);

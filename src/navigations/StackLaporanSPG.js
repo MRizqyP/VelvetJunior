@@ -9,13 +9,13 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
-import LaporanDisplay from '../../scenes/SPG/LaporanDisplay';
-import KondisiAkhirDisplay from '../../scenes/SPG/KondisiAkhirDisplay';
-import DetailKondisiAkhirDisplay from '../../scenes/SPG/DetailKondisiAkhirDisplay';
+import LaporanDisplay from '../scenes/LaporanDisplay';
+import KondisiAkhirDisplay from '../scenes/KondisiAkhir';
+import DetailKondisiAkhirDisplay from '../scenes/DetailKondisiAkhirSPG';
 
-import RiwayatDisplayRak from '../../scenes/RiwayatDisplayRak';
-import Berhasil from '../../scenes/Berhasil';
-import LaporanSalesOrder from '../../scenes/LaporanSalesOrder';
+import RiwayatDisplayRak from '../scenes/RiwayatDisplayRak';
+import Berhasil from '../scenes/Berhasil';
+import LaporanSalesOrder from '../scenes/LaporanSalesOrder';
 export default function StackLaporan({navigation, route}) {
   const Laporans = createStackNavigator();
   LogBox.ignoreAllLogs();

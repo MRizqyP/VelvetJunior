@@ -71,40 +71,33 @@ export const FONT_BOLD_10 = {
 export const FONT_BOLD_12 = {
   fontFamily: FONT_FAMILY_BOLD,
   fontSize: FONT_SIZE_12,
-  fontWeight: FONT_WEIGHT_BOLD,
 };
 export const FONT_BOLD_14 = {
   fontFamily: FONT_FAMILY_BOLD,
   fontSize: FONT_SIZE_14,
-  // fontWeight: FONT_WEIGHT_BOLD,
 };
 
 export const FONT_BOLD_16 = {
   fontFamily: FONT_FAMILY_BOLD,
   fontSize: FONT_SIZE_16,
-  fontWeight: FONT_WEIGHT_BOLD,
 };
 
 export const FONT_BOLD_18 = {
   fontFamily: FONT_FAMILY_BOLD,
   fontSize: FONT_SIZE_18,
-  fontWeight: FONT_WEIGHT_BOLD,
 };
 
 export const FONT_BOLD_20 = {
   fontFamily: FONT_FAMILY_BOLD,
   fontSize: FONT_SIZE_20,
-  fontWeight: FONT_WEIGHT_BOLD,
 };
 
 export const FONT_BOLD_22 = {
   fontFamily: FONT_FAMILY_BOLD,
   fontSize: FONT_SIZE_22,
-  fontWeight: FONT_WEIGHT_BOLD,
 };
 
 export const FONT_BOLD_24 = {
   fontFamily: FONT_FAMILY_BOLD,
   fontSize: FONT_SIZE_24,
-  fontWeight: FONT_WEIGHT_BOLD,
 };

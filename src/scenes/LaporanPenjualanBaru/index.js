@@ -15,16 +15,11 @@ import {Modalize} from 'react-native-modalize';
 import {Host, Portal} from 'react-native-portalize';
 import Feather from 'react-native-vector-icons/Feather';
 import {useNavigation} from '@react-navigation/native';
-import Header from '../../../components/HeaderModal';
 import CheckBox from '@react-native-community/checkbox';
 import NumberFormat from 'react-number-format';
-import Dashed from '../../../components/LineDashed';
-import RadioButton from '../../../components/RadioButton';
-import Images from '../../../assets';
+import Images from '../../assets';
 import styles from './styles';
 // import {Toko} from './components/modals/Toko';
-import {Toko} from './components/modals/Toko';
-import {Npwp} from './components/modals/Npwp';
 import {Produk} from './components/modals/Produk';
 import {Exit} from './components/modals/Exit';
 function LaporanPenjualanBaru({navigation, route}) {

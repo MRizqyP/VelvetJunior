@@ -25,6 +25,7 @@ import * as appActions from '../../reduxs/actions';
 
 function Login(props) {
   var screenWidth = Dimensions.get('window').width;
+  var screenHeight = Dimensions.get('window').height;
   const [form, setForm] = useState({
     email: '',
     password: '',
@@ -33,9 +34,15 @@ function Login(props) {
   });
   const [add, setAdd] = useState(false);
   const {state, actions, navigation} = props;
+  const onSuccess = () => {
+    console.log('Berhasil Masuk');
+  };
 
   const masuk = async () => {
-    await actions.LOGIN_REQ({email: form.email, password: form.password});
+    await actions.LOGIN_REQ(
+      {email: form.email, password: form.password},
+      onSuccess,
+    );
   };
   if (state.login.userToken) {
     var decoded = jwt_decode(state.login.userToken);
@@ -87,7 +94,7 @@ function Login(props) {
             />
           </View>
         </View>
-        <View style={{marginTop: 15}}>
+        <View style={{marginTop: 10}}>
           <Text
             style={
               state.login.isError
@@ -125,13 +132,18 @@ function Login(props) {
             </Text>
           </TouchableOpacity>
         </View>
-        <Button onPress={masuk} text={'Masuk'} />
+        <View style={{justifyContent: 'center', alignItems: 'center'}}>
+          <Button
+            onPress={() => navigation.navigate('DashboardSPG')}
+            text={'Masuk'}
+          />
+        </View>
       </View>
 
       <ImageBackground
         style={{
           width: screenWidth,
-          height: 150,
+          height: screenHeight / 4,
           justifyContent: 'flex-end',
         }}
         source={images.backgroundlogin}

@@ -68,7 +68,6 @@ function Chatting({navigation}) {
           <View
             style={{
               flexDirection: 'row',
-              //   width: '60%',
               alignSelf: 'flex-end',
               backgroundColor: '#F18F01',
               borderRadius: 12,

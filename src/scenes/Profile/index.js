@@ -11,6 +11,7 @@ import Images from '../../assets';
 import styles from './styles';
 import jwt_decode from 'jwt-decode';
 import Dashed from '../../components/LineDashed';
+import Button from '../../components/Button';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as appActions from '../../reduxs/actions';
@@ -120,19 +121,9 @@ function Profile(props) {
           </View>
         </View>
       </View>
-      <TouchableOpacity onPress={logout}>
-        <View style={styles.buttonMasuk}>
-          <Text
-            style={{
-              color: 'white',
-              fontWeight: 'bold',
-              fontSize: 18,
-              textAlign: 'center',
-            }}>
-            Keluar
-          </Text>
-        </View>
-      </TouchableOpacity>
+      <View style={{justifyContent: 'center', alignItems: 'center'}}>
+        <Button text={'Keluar'} onPress={logout} backgroundColor={'red'} />
+      </View>
     </View>
   );
 }

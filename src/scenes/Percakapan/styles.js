@@ -7,8 +7,8 @@ export default StyleSheet.create({
     // paddingTop: 20,
   },
   box: {
-    width: 300,
-    height: 90,
+    // width: 300,
+    // height: 90,
     marginLeft: 25,
     marginRight: 25,
     marginTop: 20,

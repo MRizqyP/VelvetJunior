@@ -2,10 +2,8 @@ import React, {useRef, forwardRef} from 'react';
 import {View, Text, ScrollView, TouchableOpacity, Image} from 'react-native';
 import {Modalize} from 'react-native-modalize';
 import styles from '../../styles';
-import Dashed from '../../../../../components/LineDashed';
-import {useCombinedRefs} from '../../../../../utils/use-combined-refs';
-import Feather from 'react-native-vector-icons/Feather';
-import Images from '../../../../../assets';
+import {useCombinedRefs} from '../../../../utils/use-combined-refs';
+import Images from '../../../../assets';
 export const Exit = forwardRef((props, ref) => {
   const modalizeRef = useRef(null);
   const contentRef = useRef(null);

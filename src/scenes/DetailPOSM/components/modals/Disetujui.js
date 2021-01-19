@@ -13,11 +13,11 @@ import Dashed from '../../../../components/LineDashed';
 import Header from '../../../../components/HeaderModal';
 import {useCombinedRefs} from '../../../../utils/use-combined-refs';
 import Images from '../../../../assets';
-export const Setuju = forwardRef((props, ref) => {
+export const DiSetuju = forwardRef((props, ref) => {
   const modalizeRef = useRef(null);
   const contentRef = useRef(null);
   const combinedRef = useCombinedRefs(ref, modalizeRef);
-
+  const {navigation} = props;
   return (
     <Modalize
       ref={combinedRef}
@@ -41,7 +41,7 @@ export const Setuju = forwardRef((props, ref) => {
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => {
-                  combinedRef.current?.close();
+                  navigation.navigate('Berhasil'), combinedRef.current?.close();
                 }}>
                 <View style={styles.buttonSimpan1}>
                   <Text style={styles.textSimpan}>Ya</Text>
@@ -57,9 +57,9 @@ export const Setuju = forwardRef((props, ref) => {
           style={{width: 120, height: 140}}
         />
         <View style={{padding: 20}}>
-          <Text style={[styles.title, {textAlign: 'center'}]}>Revisi</Text>
+          <Text style={[styles.title, {textAlign: 'center'}]}>Menyetujui</Text>
           <Text style={{color: '#AAAAAA', textAlign: 'center'}}>
-            Apakah Anda yakin meminta revisi PO ini?
+            Apakah Anda yakin akan menyetujui PO ini?
           </Text>
         </View>
       </View>

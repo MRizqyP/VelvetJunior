@@ -28,9 +28,9 @@ import StackAbsen from './StackAbsen';
 import StackLaporan from './StackLaporan';
 import StackReportAbsensi from './StackReportAbsensi';
 
-import StackLaporanSPG from './StackSPG/StackLaporan';
-import StackPurchaseOrderSPG from './StackSPG/StackPurchaseOrderSPG';
-import StackAbsenSPG from './StackSPG/StackAbsen';
+import StackLaporanSPG from './StackLaporanSPG';
+import StackPurchaseOrderSPG from './StackPurchaseOrderSPG';
+import StackAbsenSPG from './StackAbsenSPG';
 const Tabs = createBottomTabNavigator();
 const Logins = createStackNavigator();
 

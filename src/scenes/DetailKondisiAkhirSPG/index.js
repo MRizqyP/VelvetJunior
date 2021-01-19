@@ -10,15 +10,15 @@ import {
   ScrollView,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
-import Images from '../../../assets';
+import Images from '../../assets';
 import styles from './styles';
-import Button from '../../../components/Button';
+import Button from '../../components/Button';
 import {
   FONT_BOLD_12,
   FONT_BOLD_18,
   FONT_REGULAR_14,
-} from '../../../styles/typography';
-import LineDashed from '../../../components/LineDashed';
+} from '../../styles/typography';
+import LineDashed from '../../components/LineDashed';
 function DetailKondisiAkhirDisplay({navigation}) {
   const [form, setForm] = useState({
     keterangan: '',

@@ -29,13 +29,12 @@ export default StyleSheet.create({
   },
 
   headerBox: {
-    width: 320,
-    height: 150,
     backgroundColor: 'white',
-    marginTop: 120,
+    marginTop: 90,
     marginLeft: 16,
     marginRight: 16,
     borderRadius: 8,
+    // padding: ,
     elevation: 3,
   },
   textSub: {
@@ -43,7 +42,7 @@ export default StyleSheet.create({
     fontSize: 12,
   },
   boxInfo: {
-    marginTop: 30,
+    marginTop: 20,
     backgroundColor: 'white',
     marginLeft: 16,
     marginRight: 16,
@@ -65,15 +64,5 @@ export default StyleSheet.create({
     fontSize: 13,
     color: '#121212',
     fontWeight: '200',
-  },
-  buttonMasuk: {
-    justifyContent: 'center',
-    marginTop: 30,
-    marginLeft: 25,
-    width: 300,
-    height: 45,
-    backgroundColor: 'red',
-    borderRadius: 8,
-    elevation: 3,
   },
 });

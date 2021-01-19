@@ -59,7 +59,7 @@ function Login({navigation}) {
         <Image
           style={{
             width: screenWidth,
-            height: 200,
+            height: screenHeight / 3,
           }}
           source={images.img_bg_splash}
         />

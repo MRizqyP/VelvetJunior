@@ -9,9 +9,9 @@ import {
   ScrollView,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
-import Dashed from '../../../components/LineDashed';
+import Dashed from '../../components/LineDashed';
 import styles from './styles';
-import Images from '../../../assets';
+import Images from '../../assets';
 import {
   FONT_BOLD_10,
   FONT_BOLD_12,
@@ -20,7 +20,7 @@ import {
   FONT_REGULAR_10,
   FONT_REGULAR_12,
   FONT_REGULAR_14,
-} from '../../../styles/typography';
+} from '../../styles/typography';
 function Absen({navigation}) {
   var screenWidth = Dimensions.get('window').width;
   var screenHeight = Dimensions.get('window').height;

@@ -20,6 +20,8 @@ import OTPInputView from '@twotalltotems/react-native-otp-input';
 import RadioButton from '../../components/RadioButton';
 import Images from '../../assets';
 import styles from './styles';
+import {Revisi} from './components/modals/Revisi';
+import {DiSetuju} from './components/modals/Disetujui';
 
 function DetailPO({navigation, route}) {
   const modalizeRef = useRef(null);
@@ -80,6 +82,13 @@ function DetailPO({navigation, route}) {
     setShow(false);
   }, [show]);
   const {namatoko, nopo, status} = route.params;
+  const modals = Array.from({length: 3}).map((_) => useRef(null).current);
+  const onOpenRevisi = () => {
+    modals[0].open();
+  };
+  const onOpenDisetujui = () => {
+    modals[1].open();
+  };
   return (
     <View style={{flex: 1}}>
       <Portal>
@@ -147,152 +156,8 @@ function DetailPO({navigation, route}) {
         </Modalize>
       </Portal>
       <Portal>
-        <Modalize
-          ref={modalizeRef1}
-          snapPoint={320}
-          modalHeight={320}
-          HeaderComponent={<Header />}
-          FooterComponent={() => {
-            return (
-              <View style={styles.footerBottomSheet}>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                  }}>
-                  <TouchableOpacity
-                    onPress={() => modalizeRef1.current?.close()}>
-                    <View style={styles.buttonBatal}>
-                      <Text style={styles.textBatal1}>Tidak</Text>
-                    </View>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={() => {
-                      navigation.navigate('Berhasil'),
-                        modalizeRef1.current?.close();
-                    }}>
-                    <View style={styles.buttonSimpan1}>
-                      <Text style={styles.textSimpan}>Ya</Text>
-                    </View>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            );
-          }}>
-          <View style={{justifyContent: 'center', alignItems: 'center'}}>
-            <Image
-              source={Images.img_keluar_dari_halaman}
-              style={{width: 120, height: 140}}
-            />
-            <View style={{padding: 20}}>
-              <Text style={[styles.title, {textAlign: 'center'}]}>
-                Menyetujui
-              </Text>
-              <Text style={{color: '#AAAAAA', textAlign: 'center'}}>
-                Apakah Anda yakin akan menyetujui PO ini?
-              </Text>
-            </View>
-          </View>
-        </Modalize>
-      </Portal>
-      <Portal>
-        <Modalize
-          ref={modalizeRef3}
-          snapPoint={320}
-          modalHeight={320}
-          HeaderComponent={<Header />}
-          FooterComponent={() => {
-            return (
-              <View style={styles.footerBottomSheet}>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                  }}>
-                  <TouchableOpacity
-                    onPress={() => modalizeRef3.current?.close()}>
-                    <View style={styles.buttonBatal}>
-                      <Text style={styles.textBatal1}>Tidak</Text>
-                    </View>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={() => {
-                      modalizeRef3.current?.close();
-                    }}>
-                    <View style={styles.buttonSimpan1}>
-                      <Text style={styles.textSimpan}>Ya</Text>
-                    </View>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            );
-          }}>
-          <View style={{justifyContent: 'center', alignItems: 'center'}}>
-            <Image
-              source={Images.img_keluar_dari_halaman}
-              style={{width: 120, height: 140}}
-            />
-            <View style={{padding: 20}}>
-              <Text style={[styles.title, {textAlign: 'center'}]}>Revisi</Text>
-              <Text style={{color: '#AAAAAA', textAlign: 'center'}}>
-                Apakah Anda yakin meminta revisi PO ini?
-              </Text>
-            </View>
-          </View>
-        </Modalize>
-      </Portal>
-      <Portal>
-        <Modalize
-          ref={modalizeRef2}
-          snapPoint={300}
-          modalHeight={300}
-          HeaderComponent={<Header />}
-          FooterComponent={() => {
-            return (
-              <View style={styles.footerBottomSheet}>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                  }}>
-                  <TouchableOpacity
-                    onPress={() => modalizeRef2.current?.close()}>
-                    <View style={styles.buttonBatal}>
-                      <Text style={styles.textBatal1}>Batal</Text>
-                    </View>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={() => {
-                      modalizeRef2.current?.close();
-                      modalizeRef3.current?.open();
-                    }}>
-                    <View style={styles.buttonSimpan1}>
-                      <Text style={styles.textSimpan}>Kirim</Text>
-                    </View>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            );
-          }}>
-          <View style={{flex: 1, margin: 20}}>
-            <Text style={{fontSize: 18, fontWeight: 'bold', marginBottom: 20}}>
-              Catatan Revisi
-            </Text>
-            <View style={styles.linelurus} />
-            <View style={styles.action}>
-              <Text>Catatan</Text>
-              <TextInput
-                placeholderTextColor="#666666"
-                placeholder={'Tulis Catatan Revisi'}
-                style={styles.textInput}
-                multiline
-                numberOfLines={3}
-                autoCapitalize="none"
-                onChangeText={(text) => setForm({keterangan: text})}
-              />
-            </View>
-          </View>
-        </Modalize>
+        <Revisi ref={(el) => (modals[0] = el)} />
+        <DiSetuju ref={(el) => (modals[1] = el)} navigation={navigation} />
       </Portal>
 
       <ScrollView>
@@ -726,12 +591,12 @@ function DetailPO({navigation, route}) {
             flexDirection: 'row',
             justifyContent: 'center',
           }}>
-          <TouchableOpacity onPress={() => modalizeRef2.current?.open()}>
+          <TouchableOpacity onPress={onOpenRevisi}>
             <View style={styles.buttonRevisi}>
               <Text style={styles.textBatal}>Revisi</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => modalizeRef1.current?.open()}>
+          <TouchableOpacity onPress={onOpenDisetujui}>
             <View style={styles.buttonDisetujui}>
               <Text style={styles.textSimpan}>Disetujui</Text>
             </View>

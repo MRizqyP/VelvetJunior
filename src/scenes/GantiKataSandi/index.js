@@ -14,24 +14,39 @@ import {
 import Feather from 'react-native-vector-icons/Feather';
 import Images from '../../assets';
 import styles from './styles';
+import Button from '../../components/Button';
+import FormInput from '../../components/FormInput';
+import {
+  FONT_BOLD_12,
+  FONT_BOLD_14,
+  FONT_BOLD_18,
+} from '../../styles/typography';
 function GantiKataSandi({navigation}) {
   var screenWidth = Dimensions.get('window').width;
+  var screenHeight = Dimensions.get('window').height;
   const [form, setForm] = useState({
-    email: '',
-    password: '',
+    newPassword: '',
+    confirmPassword: '',
     secureTextEntry: true,
+    secureTextEntry1: true,
     token: '',
   });
   const [add, setAdd] = useState(false);
 
   const masuk = async () => {
-    navigation.navigate('Home');
+    navigation.navigate('Log In');
   };
 
   const updateSecureTextEntry = () => {
     setForm({
       ...form,
       secureTextEntry: !form.secureTextEntry,
+    });
+  };
+  const updateSecureTextEntry1 = () => {
+    setForm({
+      ...form,
+      secureTextEntry1: !form.secureTextEntry1,
     });
   };
   return (
@@ -41,9 +56,7 @@ function GantiKataSandi({navigation}) {
         <Image source={Images.logo} style={{width: 120, height: 70}} />
         <View
           style={{alignSelf: 'flex-start', paddingTop: 40, paddingLeft: 20}}>
-          <Text style={{fontSize: 18, fontWeight: 'bold'}}>
-            Ganti Kata Sandi
-          </Text>
+          <Text style={FONT_BOLD_18}>Ganti Kata Sandi</Text>
         </View>
       </View>
       <View
@@ -52,16 +65,15 @@ function GantiKataSandi({navigation}) {
           marginRight: 28,
         }}>
         <View>
-          <Text>Kata Sandi Baru</Text>
+          <Text style={FONT_BOLD_14}>Kata Sandi Baru</Text>
           <View style={styles.action}>
             <Feather name="lock" color="orange" size={20} />
-            <TextInput
-              placeholder="Masukan kata sandi baru Anda"
+            <FormInput
+              placeholder="Masukan kata sandi baru anda"
               placeholderTextColor="#666666"
-              style={styles.textInput}
-              secureTextEntry={form.secureTextEntry ? false : true}
               autoCapitalize="none"
-              onChangeText={(text) => setForm({email: text})}
+              secureTextEntry={form.secureTextEntry ? false : true}
+              onChangeText={(text) => setForm({...form, newPassword: text})}
             />
 
             <TouchableOpacity onPress={updateSecureTextEntry}>
@@ -73,21 +85,20 @@ function GantiKataSandi({navigation}) {
             </TouchableOpacity>
           </View>
         </View>
-        <View>
-          <Text>Konfirmasi Kata Sandi</Text>
+        <View style={{marginTop: 16}}>
+          <Text style={FONT_BOLD_14}>Konfirmasi Kata Sandi</Text>
           <View style={styles.action}>
             <Feather name="lock" color="orange" size={20} />
-            <TextInput
-              placeholder="Konfirmasi kata sandi Anda"
+            <FormInput
+              placeholder="Konfirmasi kata sandi anda"
               placeholderTextColor="#666666"
-              style={styles.textInput}
-              secureTextEntry={form.secureTextEntry ? false : true}
               autoCapitalize="none"
-              onChangeText={(text) => setForm({email: text})}
+              secureTextEntry={form.secureTextEntry1 ? false : true}
+              onChangeText={(text) => setForm({...form, confirmPassword: text})}
             />
 
-            <TouchableOpacity onPress={updateSecureTextEntry}>
-              {form.secureTextEntry ? (
+            <TouchableOpacity onPress={updateSecureTextEntry1}>
+              {form.secureTextEntry1 ? (
                 <Feather name="eye-off" color="orange" size={20} />
               ) : (
                 <Feather name="eye" color="orange" size={20} />
@@ -96,25 +107,13 @@ function GantiKataSandi({navigation}) {
           </View>
         </View>
 
-        <TouchableOpacity onPress={masuk}>
-          <View style={styles.buttonMasuk}>
-            <Text
-              style={{
-                color: 'white',
-                fontWeight: 'bold',
-                fontSize: 18,
-                textAlign: 'center',
-              }}>
-              Ubah Kata Sandi
-            </Text>
-          </View>
-        </TouchableOpacity>
+        <Button text={'Ubah Kata Sandi'} onPress={masuk} />
       </View>
 
       <ImageBackground
         style={{
           width: screenWidth,
-          height: 150,
+          height: screenHeight / 4,
           alignSelf: 'flex-end',
         }}
         source={Images.backgroundlogin}

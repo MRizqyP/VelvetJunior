@@ -180,11 +180,16 @@ function Dashboard({navigation}) {
               </View>
             </View>
             <Dashed />
-            <View style={{flexDirection: 'row', marginTop: 15}}>
+            <View
+              style={{
+                flexDirection: 'row',
+                marginTop: 15,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
               <View
                 style={{
                   padding: 23,
-                  justifyContent: 'center',
                   alignItems: 'center',
                 }}>
                 <Feather

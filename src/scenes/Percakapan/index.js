@@ -159,7 +159,11 @@ function Chat({navigation}) {
                   </Text>
                   <Text style={{fontSize: 12, color: 'grey'}}>04.25 PM</Text>
                 </View>
-                <View style={{flexDirection: 'row'}}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-around',
+                  }}>
                   <Text style={{fontSize: 12, color: 'grey', marginRight: 10}}>
                     Saya Tunggu Infonya ya pak
                   </Text>
@@ -171,6 +175,7 @@ function Chat({navigation}) {
                       justifyContent: 'center',
                       alignItems: 'center',
                       borderRadius: 50,
+                      marginLeft: screenWidth / 6,
                     }}>
                     <Text
                       style={{
@@ -186,98 +191,6 @@ function Chat({navigation}) {
             </View>
           </View>
         </TouchableOpacity>
-        <View style={styles.box}>
-          <View style={{flexDirection: 'row'}}>
-            <View>
-              <Image
-                source={Images.icon4}
-                style={{width: 50, height: 50, borderRadius: 50}}
-              />
-            </View>
-            <View style={{marginLeft: 10}}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  marginBottom: 10,
-                }}>
-                <Text style={{fontSize: 16, fontWeight: 'bold'}}>
-                  Yahiro Ayuko
-                </Text>
-                <Text style={{fontSize: 12, color: 'grey'}}>04.25 PM</Text>
-              </View>
-              <View style={{flexDirection: 'row'}}>
-                <Text style={{fontSize: 12, color: 'grey', marginRight: 10}}>
-                  Saya Tunggu Infonya ya pak
-                </Text>
-                <View
-                  style={{
-                    height: 20,
-                    width: 20,
-                    backgroundColor: 'orange',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    borderRadius: 50,
-                  }}>
-                  <Text
-                    style={{
-                      fontSize: 12,
-                      color: 'white',
-                    }}>
-                    2
-                  </Text>
-                </View>
-                <Feather name="more-vertical" color="black" size={20} />
-              </View>
-            </View>
-          </View>
-        </View>
-        <View style={styles.box}>
-          <View style={{flexDirection: 'row'}}>
-            <View>
-              <Image
-                source={Images.icon4}
-                style={{width: 50, height: 50, borderRadius: 50}}
-              />
-            </View>
-            <View style={{marginLeft: 10}}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  marginBottom: 10,
-                }}>
-                <Text style={{fontSize: 16, fontWeight: 'bold'}}>
-                  Yahiro Ayuko
-                </Text>
-                <Text style={{fontSize: 12, color: 'grey'}}>04.25 PM</Text>
-              </View>
-              <View style={{flexDirection: 'row'}}>
-                <Text style={{fontSize: 12, color: 'grey', marginRight: 10}}>
-                  Saya Tunggu Infonya ya pak
-                </Text>
-                <View
-                  style={{
-                    height: 20,
-                    width: 20,
-                    backgroundColor: 'orange',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    borderRadius: 50,
-                  }}>
-                  <Text
-                    style={{
-                      fontSize: 12,
-                      color: 'white',
-                    }}>
-                    2
-                  </Text>
-                </View>
-                <Feather name="more-vertical" color="black" size={20} />
-              </View>
-            </View>
-          </View>
-        </View>
       </View>
     </ScrollView>
   );

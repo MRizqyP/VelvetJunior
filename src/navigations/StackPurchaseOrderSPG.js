@@ -9,12 +9,12 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
-import PurchaseOrder from '../../scenes/PurchaseOrder';
-import LaporanPenjualanBaru from '../../scenes/SPG/LaporanPenjualanBaru';
-import DetailPO from '../../scenes/DetailPO';
-import Berhasil from '../../scenes/Berhasil';
-import GantiAlamat from '../../scenes/GantiAlamat';
-import LaporanPenjualan from '../../scenes/SPG/LaporanPenjualan';
+
+import LaporanPenjualanBaru from '../scenes/LaporanPenjualanBaru';
+import DetailPO from '../scenes/DetailPO';
+import Berhasil from '../scenes/Berhasil';
+import GantiAlamat from '../scenes/GantiAlamat';
+import LaporanPenjualan from '../scenes/LaporanPenjualan';
 export default function StackPurchaseOrdersSPG({navigation, route}) {
   const PurchaseOrders = createStackNavigator();
   LogBox.ignoreAllLogs();
