@@ -1,96 +1,93 @@
 import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ImageBackground,
-  Image,
-  Dimensions,
-  Platform,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, Image, Dimensions} from 'react-native';
 import styles from './styles';
 import Images from '../../assets';
-import OTPInputView from '@twotalltotems/react-native-otp-input';
 import SmoothPinCodeInput from 'react-native-smooth-pincode-input';
-import {
-  FONT_BOLD_14,
-  FONT_BOLD_16,
-  FONT_BOLD_18,
-  FONT_REGULAR_14,
-} from '../../styles/typography';
-function AturKataSandi({navigation}) {
+import {FONT_BOLD_18, FONT_REGULAR_14} from '../../styles/typography';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as appActions from '../../reduxs/actions';
+
+import PINCode, {
+  hasUserSetPinCode,
+  resetPinCodeInternalStates,
+  deleteUserPinCode,
+} from '@haskkor/react-native-pincode';
+function InputPin(props, {navigation}) {
   var screenWidth = Dimensions.get('window').width;
   const [form, setForm] = useState({
     code: '',
+    statusPin: 'choose',
   });
-  console.log(form.code);
+  // console.log(form.code);
+  const {state, actions} = props;
+  console.log(state);
+  const _finishProcess = async ({navigation}) => {
+    const hasPin = await hasUserSetPinCode();
+    // setForm({...form, statusPin: 'enter'});
+    // console.log(hasPin);
+    if (hasPin) {
+      actions.SET_PIN({pin: state.pin.userPin, authPin: true});
+    }
+  };
 
   return (
     <View style={styles.container}>
       <View style={{alignItems: 'center'}}>
         <View style={styles.header}>
           <Image source={Images.logo} style={{width: 120, height: 70}} />
-          <View style={styles.Message}>
+          {/* <View style={styles.Message}>
             <Text style={[FONT_BOLD_18, {textAlign: 'center'}]}>
-              Masukan Pin Baru Anda
+              {props.title}
             </Text>
             <Text
               style={[FONT_REGULAR_14, {marginTop: 20, textAlign: 'center'}]}>
-              Silakan masukan PIN baru yang akan Anda gunakan untuk Aplikasi.
+              {props.subTitle}
             </Text>
-          </View>
-        </View>
-        <View
-          style={{
-            marginLeft: 28,
-            marginRight: 28,
-            marginTop: 40,
-          }}>
-          <SmoothPinCodeInput
-            placeholder={
-              <View
-                style={{
-                  width: 15,
-                  height: 15,
-                  borderRadius: 25,
-                  opacity: 0.3,
-                  // backgroundColor: '#F18F01',
-                  borderColor: '#F18F01',
-                  borderWidth: 2,
-                }}></View>
-            }
-            mask={
-              <View
-                style={{
-                  width: 15,
-                  height: 15,
-                  borderRadius: 25,
-                  backgroundColor: '#F18F01',
-                }}></View>
-            }
-            maskDelay={1000}
-            password={true}
-            cellStyle={null}
-            cellStyleFocused={null}
-            onFulfill={() => console.log('PENUH NICH')}
-            value={form.code}
-            onTextChange={(code) => setForm({code})}
-          />
+          </View> */}
         </View>
 
-        {/* <ImageBackground
-          style={{
-            width: screenWidth,
-            height: 150,
-            alignSelf: 'flex-end',
+        <PINCode
+          status={props.statusPin}
+          touchIDDisabled={true}
+          titleChoose={props.title}
+          subtitleChoose={props.subTitle}
+          colorCircleButtons="#fff"
+          styleMainContainer={{backgroundColor: 'white'}}
+          numbersButtonOverlayColor={'#ff9800'}
+          styleLockScreenText={{color: 'red'}}
+          stylePinCodeButtonNumber={'#000'}
+          stylePinCodeColorSubtitle={'#000'}
+          stylePinCodeColorTitle={'#000'}
+          stylePinCodeCircle={{
+            backgroundColor: '#F18F01',
+            width: 15,
+            height: 15,
+            borderRadius: 25,
           }}
-          source={Images.backgroundlogin}
-        /> */}
+          storePin={(pin) => {
+            actions.PIN_REQ({pin, authPin: false});
+          }}
+          stylePinCodeTextSubtitle={FONT_REGULAR_14}
+          stylePinCodeTextTitle={FONT_BOLD_18}
+          finishProcess={_finishProcess}
+          vibrationEnabled={false}
+        />
       </View>
     </View>
   );
 }
 
-export default AturKataSandi;
+const mapStateToProps = (state) => {
+  return {
+    state: state,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(appActions.actions, dispatch),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(InputPin);

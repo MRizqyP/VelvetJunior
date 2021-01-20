@@ -45,8 +45,10 @@ function Absen({navigation}) {
           <View
             style={{
               flex: 1,
+              alignItems: 'center',
+              marginBottom: 16,
             }}>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               onPress={() => navigation.navigate('Detail Absen Masuk')}
               style={{
                 justifyContent: 'center',
@@ -68,15 +70,17 @@ function Absen({navigation}) {
               <Text style={[FONT_BOLD_12, {color: 'black', marginTop: 5}]}>
                 09:28 AM
               </Text>
-            </TouchableOpacity>
-            {/* <TouchableOpacity
-              onPress={() => navigation.navigate('Absen Masuk')}>
+            </TouchableOpacity> */}
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate('Input Absen', {name: 'Absen Masuk'})
+              }>
               <Image
                 source={Images.img_absen_masuk}
                 style={{width: 100, height: 120}}
               />
             </TouchableOpacity>
-            <Text style={{textAlign: 'center'}}>Absen Masuk</Text> */}
+            <Text style={{textAlign: 'center'}}>Absen Masuk</Text>
           </View>
           <View style={{flex: 0.1, justifyContent: 'center'}}>
             <Dashed heightvalue={80} flexDirectionvalue={'column'} />
@@ -104,7 +108,7 @@ function Absen({navigation}) {
               05:28 AM
             </Text>
             {/* <TouchableOpacity
-              onPress={() => navigation.navigate('Absen Keluar')}>
+              onPress={() => navigation.navigate('Input Absen', {name: 'Absen Keluar'})}>
               <Image
                 source={Images.img_absen_keluar}
                 style={{width: 100, height: 120}}

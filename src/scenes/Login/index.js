@@ -22,6 +22,7 @@ import jwt_decode from 'jwt-decode';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as appActions from '../../reduxs/actions';
+import {act} from 'react-test-renderer';
 
 function Login(props) {
   var screenWidth = Dimensions.get('window').width;
@@ -55,6 +56,7 @@ function Login(props) {
       navigation.navigate('DashboardSPG');
     }
   }
+  console.log(state);
 
   const updateSecureTextEntry = () => {
     setForm({
@@ -134,7 +136,11 @@ function Login(props) {
         </View>
         <View style={{justifyContent: 'center', alignItems: 'center'}}>
           <Button
-            onPress={() => navigation.navigate('DashboardSPG')}
+            // onPress={() => navigation.navigate('DashboardSP')}
+            onPress={
+              () => actions.LOGIN({email: 'qwe', password: 'qweasd'})
+              // navigation.navigate('DashboardSP')
+            }
             text={'Masuk'}
           />
         </View>

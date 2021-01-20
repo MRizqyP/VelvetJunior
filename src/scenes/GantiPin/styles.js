@@ -4,6 +4,8 @@ const {width, height} = Dimensions.get('window');
 export default StyleSheet.create({
   container: {
     flex: 1,
+
+    backgroundColor: '#fff',
   },
   imageCover: {
     resizeMode: 'cover',
@@ -20,7 +22,9 @@ export default StyleSheet.create({
     fontWeight: 'bold',
   },
   Message: {
-    margin: 28,
+    marginLeft: 28,
+    marginRight: 28,
+    marginTop: 10,
   },
   textInput: {
     flex: 1,

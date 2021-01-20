@@ -6,19 +6,11 @@ const initialState = {
   userToken: null,
   userEmail: null,
   isError: null,
+  isLoggedin: false,
 };
 
 export default function loginReducer(state = initialState, action = {}) {
   switch (action.type) {
-    case types.RETRIEVE_TOKEN:
-      return {
-        ...state,
-        userEmail: action.email,
-        userName: action.name,
-        userToken: action.token,
-        isLoading: false,
-        isError: null,
-      };
     case types.LOGIN:
       return {
         ...state,
@@ -27,6 +19,7 @@ export default function loginReducer(state = initialState, action = {}) {
         userToken: action.payload.token,
         isLoading: false,
         isError: null,
+        isLoggedin: true,
       };
     case types.LOGIN_GAGAL:
       return {
@@ -36,6 +29,7 @@ export default function loginReducer(state = initialState, action = {}) {
         userToken: null,
         isLoading: false,
         isError: action.payload.errorMessages,
+        isLoggedin: false,
       };
     case types.LOGOUT:
       return {
@@ -45,6 +39,7 @@ export default function loginReducer(state = initialState, action = {}) {
         userToken: null,
         isLoading: false,
         isError: null,
+        isLoggedin: false,
       };
     default:
       return state;

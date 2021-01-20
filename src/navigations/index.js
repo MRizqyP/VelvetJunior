@@ -17,6 +17,7 @@ import Login from '../scenes/Login';
 import SplashScreen from '../scenes/SplasScreen';
 import AturKataSandi from '../scenes/AturKataSandi';
 import jwt_decode from 'jwt-decode';
+import InputPin from '../scenes/GantiPin';
 import GantiKataSandi from '../scenes/GantiKataSandi';
 import {Host, Portal} from 'react-native-portalize';
 import StackProfile from './StackProfile';
@@ -37,6 +38,7 @@ const Logins = createStackNavigator();
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as appActions from '../reduxs/actions';
+import {getPin} from '../utils/storage';
 
 function stackTabsSP() {
   return (
@@ -298,25 +300,64 @@ function stackTabsPPIC() {
 
 function Routes(props) {
   const {state, actions} = props;
-  const [role, setRole] = useState('');
+  const [pin, setRole] = useState('');
 
   useEffect(() => {
     setTimeout(async () => {
-      let userToken;
-      userToken = null;
-      try {
-        userToken = await AsyncStorage.getItem('userToken');
-      } catch (e) {
-        console.log(e);
-      }
-      actions.RETRIEVE_TOKEN();
+      // let userToken;
+      // userToken = null;
+      // try {
+      //   userToken = await AsyncStorage.getItem('userToken');
+      // } catch (e) {
+      //   console.log(e);
+      // }
+      // try {
+      //   // AsyncStorage.clear();
+      //   const keys = await AsyncStorage.getAllKeys();
+      //   const result = await AsyncStorage.multiGet(keys);
+      //   return result.map((req) => JSON.parse(req)).forEach(console.log);
+      // } catch (error) {
+      //   console.error(error);
+      // }
+      // const keys = await AsyncStorage.getAllKeys();
+      // const result = await AsyncStorage.multiGet(keys);
+      // AsyncStorage.clear();
+      const result = await getPin();
+      actions.PIN_REQ({pin: result});
+      // actions.RETRIEVE_PIN();
     }, 2000);
   }, []);
+  // console.log(state);
 
-  if (state.login.isLoading) {
+  if (state.pin.isLoading) {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <SplashScreen />
+      </View>
+    );
+  }
+
+  if (state.login.isLoggedin && !state.pin.userPin) {
+    return (
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <InputPin
+          title={'Masukan Pin Baru Anda'}
+          subTitle={
+            'Silakan masukan PIN baru yang akan Anda gunakan untuk Aplikasi.'
+          }
+          statusPin={'choose'}
+        />
+      </View>
+    );
+  }
+  if (state.login.isLoggedin && state.pin.userPin && !state.pin.authPin) {
+    return (
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <InputPin
+          title={'Masukan Pin Anda'}
+          subTitle={'Silakan masukan PIN untuk melanjutkan pekerjaan Anda'}
+          statusPin={'enter'}
+        />
       </View>
     );
   }

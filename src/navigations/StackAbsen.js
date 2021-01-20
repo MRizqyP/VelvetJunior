@@ -6,6 +6,7 @@ import Absen from '../scenes/Absen';
 import AbsenKeluar from '../scenes/AbsenKeluar';
 import AbsenMasuk from '../scenes/AbsenMasuk';
 import DetailAbsenMasuk from '../scenes/DetailAbsenMasuk';
+import KondisiAkhir from '../scenes/KondisiAkhir';
 import RiwayatAbsen from '../scenes/RiwayatAbsen';
 export default function StackChat({navigation, route}) {
   const Absens = createStackNavigator();
@@ -56,6 +57,17 @@ export default function StackChat({navigation, route}) {
             backgroundColor: '#51C9C2',
           },
         }}
+      />
+      <Absens.Screen
+        name="Input Absen"
+        component={KondisiAkhir}
+        options={({route}) => ({
+          headerTintColor: 'white',
+          title: route.params.name,
+          headerStyle: {
+            backgroundColor: '#51C9C2',
+          },
+        })}
       />
       <Absens.Screen
         name="Absen Masuk"
