@@ -26,12 +26,12 @@ import {Toko} from './components/modals/Toko';
 import {Npwp} from './components/modals/Npwp';
 import {Produk} from './components/modals/Produk';
 import {Exit} from './components/modals/Exit';
+import ImagePicker from 'react-native-image-crop-picker';
 function POBaru({navigation, route}) {
   const modals = Array.from({length: 3}).map((_) => useRef(null).current);
 
   const {kategori} = route.params;
-  const width = Dimensions.get('window').width;
-  const height = Dimensions.get('window').height;
+
   const [value, setValue] = useState('');
 
   const PROP = [
@@ -74,6 +74,8 @@ function POBaru({navigation, route}) {
     namaproduk: '',
     sku: '',
     harga: '',
+    fotonpwp: '',
+    fotonik: '',
   });
 
   function handleChange(newValue) {
@@ -181,6 +183,29 @@ function POBaru({navigation, route}) {
       }
     }
   }
+  const takePhotoFromCameraNik = async () => {
+    ImagePicker.openCamera({
+      compressImageMaxWidth: 300,
+      compressImageMaxHeight: 300,
+      cropping: true,
+      compressImageQuality: 0.7,
+    }).then(async (image) => {
+      console.log(image);
+      setForm({...form, fotonik: image.path});
+    });
+  };
+
+  const takePhotoFromCameraNpwp = async () => {
+    ImagePicker.openCamera({
+      compressImageMaxWidth: 300,
+      compressImageMaxHeight: 300,
+      cropping: true,
+      compressImageQuality: 0.7,
+    }).then(async (image) => {
+      console.log(image);
+      setForm({...form, fotonpwp: image.path});
+    });
+  };
 
   const renderItem = ({item}) => {
     return (
@@ -299,11 +324,9 @@ function POBaru({navigation, route}) {
                     marginBottom: 15,
                   }}>
                   <View style={{flexDirection: 'row'}}>
-                    <Feather
-                      name="shopping-cart"
-                      color={'orange'}
-                      size={25}
-                      style={{marginLeft: 10}}
+                    <Image
+                      source={Images.ic_toko}
+                      style={{width: 25, height: 25}}
                     />
                     <Text
                       style={{
@@ -487,18 +510,32 @@ function POBaru({navigation, route}) {
                             }}>
                             Photo NPWP
                           </Text>
-                          <View
-                            style={[
-                              styles.formProduk,
-                              {marginTop: 15, borderColor: '#F18F01'},
-                            ]}>
-                            <View style={{alignItems: 'center'}}>
-                              <Image
-                                source={Images.camera}
-                                style={{width: 40, height: 30}}
-                              />
-                            </View>
-                          </View>
+                          {form.fotonpwp ? (
+                            <Image
+                              source={{uri: form.fotonpwp}}
+                              style={{
+                                width: '100%',
+                                height: Dimensions.get('window').height / 8,
+                                borderRadius: 8,
+                                marginTop: 10,
+                              }}
+                            />
+                          ) : (
+                            <TouchableOpacity onPress={takePhotoFromCameraNpwp}>
+                              <View
+                                style={[
+                                  styles.formProduk,
+                                  {marginTop: 15, borderColor: '#F18F01'},
+                                ]}>
+                                <View style={{alignItems: 'center'}}>
+                                  <Image
+                                    source={Images.camera}
+                                    style={{width: 40, height: 30}}
+                                  />
+                                </View>
+                              </View>
+                            </TouchableOpacity>
+                          )}
                         </View>
                         <View style={{padding: 8, flex: 1}}>
                           <View style={styles.boxColor}>
@@ -533,18 +570,32 @@ function POBaru({navigation, route}) {
                             }}>
                             Photo NIK
                           </Text>
-                          <View
-                            style={[
-                              styles.formProduk,
-                              {marginTop: 15, borderColor: '#F18F01'},
-                            ]}>
-                            <View style={{alignItems: 'center'}}>
-                              <Image
-                                source={Images.camera}
-                                style={{width: 40, height: 30}}
-                              />
-                            </View>
-                          </View>
+                          {form.fotonik ? (
+                            <Image
+                              source={{uri: form.fotonik}}
+                              style={{
+                                width: '100%',
+                                height: Dimensions.get('window').height / 8,
+                                borderRadius: 8,
+                                marginTop: 10,
+                              }}
+                            />
+                          ) : (
+                            <TouchableOpacity onPress={takePhotoFromCameraNik}>
+                              <View
+                                style={[
+                                  styles.formProduk,
+                                  {marginTop: 15, borderColor: '#F18F01'},
+                                ]}>
+                                <View style={{alignItems: 'center'}}>
+                                  <Image
+                                    source={Images.camera}
+                                    style={{width: 40, height: 30}}
+                                  />
+                                </View>
+                              </View>
+                            </TouchableOpacity>
+                          )}
                         </View>
                       </View>
                       <View style={{padding: 8}}>

@@ -299,35 +299,18 @@ function stackTabsPPIC() {
 }
 
 function Routes(props) {
-  const {state, actions} = props;
+  const {state, actions, navigation} = props;
   const [pin, setRole] = useState('');
 
   useEffect(() => {
     setTimeout(async () => {
-      // let userToken;
-      // userToken = null;
-      // try {
-      //   userToken = await AsyncStorage.getItem('userToken');
-      // } catch (e) {
-      //   console.log(e);
-      // }
-      // try {
-      //   // AsyncStorage.clear();
-      //   const keys = await AsyncStorage.getAllKeys();
-      //   const result = await AsyncStorage.multiGet(keys);
-      //   return result.map((req) => JSON.parse(req)).forEach(console.log);
-      // } catch (error) {
-      //   console.error(error);
-      // }
-      // const keys = await AsyncStorage.getAllKeys();
-      // const result = await AsyncStorage.multiGet(keys);
       // AsyncStorage.clear();
       const result = await getPin();
       actions.PIN_REQ({pin: result});
       // actions.RETRIEVE_PIN();
     }, 2000);
   }, []);
-  // console.log(state);
+  console.log(state);
 
   if (state.pin.isLoading) {
     return (
@@ -361,6 +344,19 @@ function Routes(props) {
       </View>
     );
   }
+  console.log(state);
+
+  // if (state.login.userToken) {
+  //   var decoded = jwt_decode(state.login.userToken);
+  //   console.log(decoded.role.name);
+  //   if (decoded.role.name === 'Sales Person') {
+  //     navigation.navigate('DashboardSP');
+  //   } else if (decoded.role.name === 'Sales Manager') {
+  //     navigation.navigate('DashboardSM');
+  //   } else if (decoded.role.name === 'SPG') {
+  //     navigation.navigate('DashboardSPG');
+  //   }
+  // }
   return (
     <NavigationContainer>
       <Logins.Navigator>

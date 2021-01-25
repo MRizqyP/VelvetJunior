@@ -7,9 +7,13 @@ const images = {
   icon3: require('../assets/images/ic_kehadiran.png'),
   icon4: require('../assets/images/pasfoto.jpg'),
   icon_download_pdf: require('../assets/images/ic_download_pdf.png'),
+  ic_history: require('../assets/images/ic_history.png'),
+  ic_toko: require('../assets/images/ic_toko.png'),
+  ic_add_chat: require('../assets/images/ic_add_chat.png'),
 
   img_bg_awan: require('../assets/images/img_bg_awan.png'),
   img_bg_splash: require('../assets/images/img_bg_splash_screen.png'),
+  img_chat_bg: require('../assets/images/img_chat_bg.png'),
   backgroundlogin: require('../assets/images/backgroundlogin.png'),
   backgroundprofile: require('../assets/images/backgroundprofile.png'),
   camera: require('../assets/images/camera.png'),

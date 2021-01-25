@@ -45,6 +45,14 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  boxInfoIsi: {
+    height: Dimensions.get('window').height / 4,
+    margin: 20,
+    borderRadius: 8,
+
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   line: {
     marginTop: 10,
     borderStyle: 'dashed',

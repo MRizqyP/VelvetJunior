@@ -4,7 +4,7 @@ import {
   TouchableOpacity,
   Text,
   Alert,
-  View,
+  Image,
   LogBox,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
@@ -14,6 +14,7 @@ import DetailDisplayRak from '../scenes/DetailDisplayRak';
 import RiwayatDisplayRak from '../scenes/RiwayatDisplayRak';
 import Berhasil from '../scenes/Berhasil';
 import LaporanSalesOrder from '../scenes/LaporanSalesOrder';
+import Images from '../assets';
 export default function StackLaporan({navigation, route}) {
   const Laporans = createStackNavigator();
   LogBox.ignoreAllLogs();
@@ -69,11 +70,9 @@ export default function StackLaporan({navigation, route}) {
           headerRight: () => (
             <TouchableOpacity
               onPress={() => navigation.navigate('Riwayat Display Rak')}>
-              <Icon
-                name="clock"
-                color={'white'}
-                size={25}
-                style={{paddingRight: 15}}
+              <Image
+                source={Images.ic_history}
+                style={{width: 25, height: 25, marginRight: 20}}
               />
             </TouchableOpacity>
           ),

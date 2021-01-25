@@ -12,21 +12,48 @@ import {
 import Images from '../../assets';
 import styles from './styles';
 import Feather from 'react-native-vector-icons/Feather';
+import ImagePicker from 'react-native-image-crop-picker';
 function KondisiAkhir({navigation}) {
   const [form, setForm] = useState({
     keterangan: '',
+    image: '',
   });
   var screenWidth = Dimensions.get('window').width;
-  var screenHeight = Dimensions.get('window').height / 1.8;
+  var screenHeight = Dimensions.get('window').height;
+
+  const takePhotoFromCamera = async () => {
+    ImagePicker.openCamera({
+      compressImageMaxWidth: 300,
+      compressImageMaxHeight: 300,
+      cropping: true,
+      compressImageQuality: 0.7,
+    }).then(async (image) => {
+      console.log(image);
+      setForm({image: image.path});
+    });
+  };
+  console.log(form.image);
   return (
     <View style={styles.container}>
       <ScrollView>
-        <View style={styles.boxInfo}>
-          <Image source={Images.camera} style={{width: 60, height: 48}} />
-          <Text style={{fontSize: 12, color: '#AAAAAA', marginTop: 10}}>
-            Tekan disini untuk mengambil gambar
-          </Text>
-        </View>
+        {form.image ? (
+          <View style={styles.boxInfoIsi}>
+            <Image
+              source={{uri: form.image}}
+              style={{width: '100%', height: screenHeight / 4, borderRadius: 8}}
+            />
+          </View>
+        ) : (
+          <TouchableOpacity onPress={takePhotoFromCamera}>
+            <View style={styles.boxInfo}>
+              <Image source={Images.camera} style={{width: 60, height: 48}} />
+              <Text style={{fontSize: 12, color: '#AAAAAA', marginTop: 10}}>
+                Tekan disini untuk mengambil gambar
+              </Text>
+            </View>
+          </TouchableOpacity>
+        )}
+
         <View style={styles.headerBox}>
           <Text style={styles.textTitle}>Keterangan</Text>
 

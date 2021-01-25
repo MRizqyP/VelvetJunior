@@ -45,6 +45,7 @@ function Login(props) {
       onSuccess,
     );
   };
+
   if (state.login.userToken) {
     var decoded = jwt_decode(state.login.userToken);
     console.log(decoded.role.name);
@@ -56,7 +57,6 @@ function Login(props) {
       navigation.navigate('DashboardSPG');
     }
   }
-  console.log(state);
 
   const updateSecureTextEntry = () => {
     setForm({
@@ -138,8 +138,9 @@ function Login(props) {
           <Button
             // onPress={() => navigation.navigate('DashboardSP')}
             onPress={
-              () => actions.LOGIN({email: 'qwe', password: 'qweasd'})
-              // navigation.navigate('DashboardSP')
+              masuk
+              // () => actions.LOGIN({email: 'qwe', password: 'qweasd'})
+              // () => navigation.navigate('DashboardSP')
             }
             text={'Masuk'}
           />

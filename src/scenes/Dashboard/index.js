@@ -102,7 +102,8 @@ function Dashboard({navigation}) {
         <View style={styles.boxInfo}>
           <View style={{padding: 16}}>
             <View style={{flexDirection: 'row', marginTop: 15}}>
-              <Feather name="shopping-cart" color="#F18F01" size={20} />
+              <Image source={Images.ic_toko} style={{width: 25, height: 25}} />
+              {/* <Feather name="shopping-cart" color="#F18F01" size={20} /> */}
               <View style={{marginLeft: 10, flex: 1}}>
                 <Text style={[FONT_BOLD_14, {color: 'black'}]}>
                   Nerby Baby Shop

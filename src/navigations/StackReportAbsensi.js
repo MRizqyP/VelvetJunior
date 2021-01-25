@@ -1,9 +1,8 @@
 import React from 'react';
-import {TouchableOpacity, Text, LogBox} from 'react-native';
+import {TouchableOpacity, Text, LogBox, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
 import RiwayatAbsen from '../scenes/RiwayatAbsen';
-import AbsenKeluar from '../scenes/AbsenKeluar';
 import DetailAbsenMasuk from '../scenes/DetailAbsenMasuk';
 import RiwayatAbsenSM from '../scenes/RiwayatAbsenSM';
 import ReportAbsensis from '../scenes/ReportAbsensi';
@@ -11,6 +10,7 @@ import DetailAbsen from '../scenes/DetailAbsensiSM';
 import DetailAbsensiSMSPG from '../scenes/DetailAbsensiSMSPG';
 import DetailRiwayatAbsensiSM from '../scenes/DetailRiwayatAbsensiSM';
 import DetailRiwayatAbsensiSMSPG from '../scenes/DetailRiwayatAbsensiSMSPG';
+import Images from '../assets';
 export default function StackReportAbsensi({navigation, route}) {
   const ReportAbsensi = createStackNavigator();
   LogBox.ignoreAllLogs();
@@ -50,16 +50,7 @@ export default function StackReportAbsensi({navigation, route}) {
           headerTitle: '',
         }}
       />
-      <ReportAbsensi.Screen
-        name="Absen Keluar"
-        component={AbsenKeluar}
-        options={{
-          headerTintColor: 'white',
-          headerStyle: {
-            backgroundColor: '#51C9C2',
-          },
-        }}
-      />
+
       <ReportAbsensi.Screen
         name="Detail Absen Masuk"
         component={DetailAbsenMasuk}
@@ -133,11 +124,9 @@ export default function StackReportAbsensi({navigation, route}) {
           headerRight: () => (
             <TouchableOpacity
               onPress={() => navigation.navigate('Riwayat Kehadiran')}>
-              <Icon
-                name="clock"
-                color={'white'}
-                size={25}
-                style={{paddingRight: 15}}
+              <Image
+                source={Images.ic_history}
+                style={{width: 25, height: 25, marginRight: 20}}
               />
             </TouchableOpacity>
           ),

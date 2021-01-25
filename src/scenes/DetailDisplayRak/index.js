@@ -96,11 +96,9 @@ function DetailDisplayRak({navigation, route}) {
                             flexDirection: 'row',
                             alignItems: 'center',
                           }}>
-                          <Feather
-                            name="shopping-cart"
-                            color={'orange'}
-                            size={20}
-                            style={{marginRight: 8}}
+                          <Image
+                            source={Images.ic_toko}
+                            style={{width: 25, height: 25, marginRight: 8}}
                           />
                           <Text
                             style={[

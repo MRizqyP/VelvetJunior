@@ -13,7 +13,7 @@ import PINCode, {
   resetPinCodeInternalStates,
   deleteUserPinCode,
 } from '@haskkor/react-native-pincode';
-function InputPin(props, {navigation}) {
+function InputPin(props) {
   var screenWidth = Dimensions.get('window').width;
   const [form, setForm] = useState({
     code: '',
@@ -22,12 +22,13 @@ function InputPin(props, {navigation}) {
   // console.log(form.code);
   const {state, actions} = props;
   console.log(state);
-  const _finishProcess = async ({navigation}) => {
+  const _finishProcess = async () => {
     const hasPin = await hasUserSetPinCode();
     // setForm({...form, statusPin: 'enter'});
     // console.log(hasPin);
     if (hasPin) {
       actions.SET_PIN({pin: state.pin.userPin, authPin: true});
+      // props.navigation.navigate('DashboardSP');
     }
   };
 

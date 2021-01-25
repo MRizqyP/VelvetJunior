@@ -29,11 +29,9 @@ function Chat({navigation}) {
     nav.setOptions({
       headerRight: () => (
         <TouchableOpacity onPress={onOpen}>
-          <Feather
-            name="plus-circle"
-            color={'white'}
-            size={25}
-            style={{paddingRight: 15}}
+          <Image
+            source={Images.ic_add_chat}
+            style={{width: 25, height: 25, marginRight: 20}}
           />
         </TouchableOpacity>
       ),
@@ -163,6 +161,8 @@ function Chat({navigation}) {
                   style={{
                     flexDirection: 'row',
                     justifyContent: 'space-around',
+                    // alignItems: 'flex-end',
+                    // marginLeft: 20,
                   }}>
                   <Text style={{fontSize: 12, color: 'grey', marginRight: 10}}>
                     Saya Tunggu Infonya ya pak
@@ -175,7 +175,6 @@ function Chat({navigation}) {
                       justifyContent: 'center',
                       alignItems: 'center',
                       borderRadius: 50,
-                      marginLeft: screenWidth / 6,
                     }}>
                     <Text
                       style={{

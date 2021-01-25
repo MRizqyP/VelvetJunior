@@ -212,11 +212,9 @@ function DetailPO({navigation, route}) {
                   marginBottom: 15,
                 }}>
                 <View style={{flexDirection: 'row'}}>
-                  <Feather
-                    name="shopping-cart"
-                    color={'orange'}
-                    size={25}
-                    style={{marginLeft: 10}}
+                  <Image
+                    source={Images.ic_toko}
+                    style={{width: 25, height: 25}}
                   />
                   <Text
                     style={{

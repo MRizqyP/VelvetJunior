@@ -107,6 +107,13 @@ export default StyleSheet.create({
     borderRadius: 0.1,
     borderColor: '#51C9C2',
   },
+  formProdukIsi: {
+    // padding: 15,
+    borderStyle: 'dashed',
+    borderWidth: 1,
+    borderRadius: 0.1,
+    borderColor: '#51C9C2',
+  },
   formBox: {
     padding: 14,
     backgroundColor: 'white',
