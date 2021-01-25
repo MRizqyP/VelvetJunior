@@ -304,10 +304,8 @@ function Routes(props) {
 
   useEffect(() => {
     setTimeout(async () => {
-      // AsyncStorage.clear();
       const result = await getPin();
       actions.PIN_REQ({pin: result});
-      // actions.RETRIEVE_PIN();
     }, 2000);
   }, []);
   console.log(state);
@@ -344,67 +342,68 @@ function Routes(props) {
       </View>
     );
   }
-  console.log(state);
 
-  // if (state.login.userToken) {
-  //   var decoded = jwt_decode(state.login.userToken);
-  //   console.log(decoded.role.name);
-  //   if (decoded.role.name === 'Sales Person') {
-  //     navigation.navigate('DashboardSP');
-  //   } else if (decoded.role.name === 'Sales Manager') {
-  //     navigation.navigate('DashboardSM');
-  //   } else if (decoded.role.name === 'SPG') {
-  //     navigation.navigate('DashboardSPG');
-  //   }
-  // }
   return (
     <NavigationContainer>
       <Logins.Navigator>
-        <Logins.Screen
-          name="Log In"
-          component={Login}
-          options={{
-            headerTransparent: true,
-            headerTitle: '',
-          }}
-        />
-        <Logins.Screen
-          name="Lupa Sandi"
-          component={AturKataSandi}
-          options={{
-            headerTransparent: true,
-            headerTitle: '',
-          }}
-        />
-        <Logins.Screen
-          name="Ganti Kata Sandi"
-          component={GantiKataSandi}
-          options={{
-            headerTransparent: true,
-            headerTitle: '',
-          }}
-        />
-        <Logins.Screen
-          name="DashboardSP"
-          component={stackTabsSP}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Logins.Screen
-          name="DashboardSM"
-          component={stackTabsSM}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Logins.Screen
-          name="DashboardSPG"
-          component={stackTabsSPG}
-          options={{
-            headerShown: false,
-          }}
-        />
+        {state.login.isLoggedin ? (
+          <>
+            {state.auth.roleName === 'Sales Person' ? (
+              <Logins.Screen
+                name="DashboardSP"
+                component={stackTabsSP}
+                options={{
+                  headerShown: false,
+                }}
+              />
+            ) : null}
+            {state.auth.roleName === 'Sales Manager' ? (
+              <Logins.Screen
+                name="DashboardSM"
+                component={stackTabsSM}
+                options={{
+                  headerShown: false,
+                }}
+              />
+            ) : null}
+            {state.auth.roleName === 'SPG' ? (
+              <Logins.Screen
+                name="DashboardSPG"
+                component={stackTabsSPG}
+                options={{
+                  headerShown: false,
+                }}
+              />
+            ) : null}
+          </>
+        ) : (
+          <>
+            <Logins.Screen
+              name="Log In"
+              component={Login}
+              options={{
+                headerTransparent: true,
+                headerTitle: '',
+              }}
+            />
+            <Logins.Screen
+              name="Lupa Sandi"
+              component={AturKataSandi}
+              options={{
+                headerTransparent: true,
+                headerTitle: '',
+              }}
+            />
+            <Logins.Screen
+              name="Ganti Kata Sandi"
+              component={GantiKataSandi}
+              options={{
+                headerTransparent: true,
+                headerTitle: '',
+              }}
+            />
+          </>
+        )}
       </Logins.Navigator>
     </NavigationContainer>
   );

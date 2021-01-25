@@ -48,7 +48,7 @@ function Login(props) {
 
   if (state.login.userToken) {
     var decoded = jwt_decode(state.login.userToken);
-    console.log(decoded.role.name);
+    // console.log(decoded.role.name);
     if (decoded.role.name === 'Sales Person') {
       navigation.navigate('DashboardSP');
     } else if (decoded.role.name === 'Sales Manager') {

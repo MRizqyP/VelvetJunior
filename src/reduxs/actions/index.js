@@ -1,11 +1,9 @@
-import * as apiTesterActions from './action-api-tester';
-import * as counterActions from './action-counter';
 import * as loginActions from './action-login';
 import * as pinActions from './action-pin';
+import * as authActions from './action-auth';
 
 const actions = {
-  ...apiTesterActions,
-  ...counterActions,
+  ...authActions,
   ...loginActions,
   ...pinActions,
 };

@@ -18,9 +18,9 @@ import * as appActions from '../../reduxs/actions';
 
 function Profile(props) {
   const {state, actions, navigation} = props;
+
   const logout = async () => {
     actions.LOGOUT();
-    // navigation.navigate('Log In');
   };
   var screenWidth = Dimensions.get('window').width;
   var screenHeight = Dimensions.get('window').height / 2;
