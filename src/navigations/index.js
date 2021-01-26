@@ -308,7 +308,7 @@ function Routes(props) {
       actions.PIN_REQ({pin: result});
     }, 2000);
   }, []);
-  console.log(state);
+  // console.log(state);
 
   if (state.pin.isLoading) {
     return (

@@ -17,16 +17,3 @@ export function SET_PIN(payload) {
     payload: payload,
   };
 }
-
-// export function LOGIN(payload) {
-//   return {
-//     type: types.LOGIN,
-//     payload: payload,
-//   };
-// }
-
-// export function LOGOUT() {
-//   return {
-//     type: types.LOGOUT,
-//   };
-// }

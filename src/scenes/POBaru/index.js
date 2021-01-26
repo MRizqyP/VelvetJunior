@@ -27,12 +27,21 @@ import {Npwp} from './components/modals/Npwp';
 import {Produk} from './components/modals/Produk';
 import {Exit} from './components/modals/Exit';
 import ImagePicker from 'react-native-image-crop-picker';
-function POBaru({navigation, route}) {
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as appActions from '../../reduxs/actions';
+
+function POBaru(props) {
   const modals = Array.from({length: 3}).map((_) => useRef(null).current);
 
+  const {stateCustomer, stateLogin, actions, navigation, route} = props;
   const {kategori} = route.params;
+  // console.log(stateCustomer.customer);
 
   const [value, setValue] = useState('');
+  useEffect(() => {
+    actions.GET_CUSTOMER({token: stateLogin.userToken});
+  }, []);
 
   const PROP = [
     {
@@ -207,6 +216,16 @@ function POBaru({navigation, route}) {
     });
   };
 
+  const [selected, setSelected] = useState({
+    itemIndex: '',
+    btnDisabled: true,
+    NCategory: '',
+  });
+
+  const PressedItem = (itemId, Category) => {
+    setSelected({itemIndex: itemId, btnDisabled: false, NCategory: Category});
+  };
+
   const renderItem = ({item}) => {
     return (
       <View
@@ -278,7 +297,14 @@ function POBaru({navigation, route}) {
     <View style={{flex: 1}}>
       <ScrollView>
         <Portal>
-          <Toko ref={(el) => (modals[0] = el)} handleToko={handleToko} />
+          <Toko
+            ref={(el) => (modals[0] = el)}
+            handleToko={handleToko}
+            data={stateCustomer.customer}
+            selected={selected}
+            PressedItem={PressedItem}
+            navigation={navigation}
+          />
           <Npwp ref={(el) => (modals[1] = el)} handleNpwp={handleNpwp} />
           <Produk ref={(el) => (modals[2] = el)} handleProduk={handleProduk} />
           <Exit
@@ -949,5 +975,17 @@ function POBaru({navigation, route}) {
     </View>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    stateCustomer: state.customer,
+    stateLogin: state.login,
+  };
+};
 
-export default POBaru;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(appActions.actions, dispatch),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(POBaru);

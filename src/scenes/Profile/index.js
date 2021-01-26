@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   View,
   Text,
@@ -22,6 +22,11 @@ function Profile(props) {
   const logout = async () => {
     actions.LOGOUT();
   };
+
+  useEffect(() => {
+    actions.GET_USER_PROFILE({token: state.login.userToken});
+  }, []);
+
   var screenWidth = Dimensions.get('window').width;
   var screenHeight = Dimensions.get('window').height / 2;
   return (
@@ -48,9 +53,11 @@ function Profile(props) {
         </View>
 
         <Text style={[styles.textName, {marginTop: 15}]}>
-          Mohammad Rizqy Pratama
+          {state.profile.user.firstName} {state.profile.user.lastName}
         </Text>
-        <Text style={[styles.textSub, {marginTop: 15}]}>Sales</Text>
+        <Text style={[styles.textSub, {marginTop: 15}]}>
+          {state.profile.user.role}
+        </Text>
       </View>
       <View style={styles.boxInfo}>
         <View style={{padding: 20}}>
@@ -60,7 +67,7 @@ function Profile(props) {
               justifyContent: 'space-between',
             }}>
             <Text style={styles.textTitle}>NIK</Text>
-            <Text style={styles.textsubTitle}>10000299388432</Text>
+            <Text style={styles.textsubTitle}>{state.profile.user.nik}</Text>
           </View>
           <Dashed />
           <View
@@ -70,7 +77,7 @@ function Profile(props) {
               marginTop: 10,
             }}>
             <Text style={styles.textTitle}>Email</Text>
-            <Text style={styles.textsubTitle}>rizqy.pratama@bts.id</Text>
+            <Text style={styles.textsubTitle}>{state.profile.user.email}</Text>
           </View>
           <Dashed />
           <View
@@ -80,7 +87,9 @@ function Profile(props) {
               marginTop: 10,
             }}>
             <Text style={styles.textTitle}>No.Telepon</Text>
-            <Text style={styles.textsubTitle}>+62 811 2228 3744</Text>
+            <Text style={styles.textsubTitle}>
+              {state.profile.user.phoneNumber}
+            </Text>
           </View>
           <Dashed />
           <View
@@ -90,7 +99,7 @@ function Profile(props) {
               marginTop: 10,
             }}>
             <Text style={styles.textTitle}>Jenis Kelamin</Text>
-            <Text style={styles.textsubTitle}>Laki - Laki</Text>
+            <Text style={styles.textsubTitle}>{state.profile.user.gender}</Text>
           </View>
           <Dashed />
           <View

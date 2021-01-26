@@ -20,21 +20,20 @@ import Images from '../../assets';
 import styles from './styles';
 import {Filter} from './components/modals/Filter';
 import {KategoriProduk} from './components/modals/KategoriProduk';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as appActions from '../../reduxs/actions';
 
-function PurchaseOrder({navigation}) {
-  const width = Dimensions.get('window').width;
-  const modalizeRef = useRef(null);
-  const modalizeRef2 = useRef(null);
+function PurchaseOrder(props) {
   const modals = Array.from({length: 2}).map((_) => useRef(null).current);
+  const {stateLogin, stateCategory, actions, navigation, route} = props;
 
-  function handleFilter(value, detailtoko) {
-    // setForm({
-    //   ...form,
-    //   namatoko: value.namatoko,
-    //   alamat: value.alamat,
-    // });
-    // setDetailToko(detailtoko);
-  }
+  const [value, setValue] = useState('');
+  // console.log(stateCategory.category);
+  useEffect(() => {
+    actions.GET_CATEGORY({token: stateLogin.userToken});
+  }, []);
+
   var screenWidth = Dimensions.get('window').width;
   var screenHeight = Dimensions.get('window').height / 4;
   const nav = useNavigation();
@@ -64,30 +63,10 @@ function PurchaseOrder({navigation}) {
     },
   ];
 
-  const renderItem = ({item}) => {
-    return (
-      <TouchableOpacity
-        onPress={() => {
-          PressedItem(item.id, item.kategori);
-        }}>
-        <View style={{flex: 1, marginTop: 10, marginLeft: 20, marginRight: 20}}>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text style={{fontSize: 14, fontWeight: '400', marginBottom: 12}}>
-              {item.kategori}
-            </Text>
-            {selected.itemIndex == item.id ? (
-              <Feather name="check" color={'orange'} size={20} />
-            ) : null}
-          </View>
-          <Dashed />
-        </View>
-      </TouchableOpacity>
-    );
-  };
-
   const PressedItem = (itemId, Category) => {
     setSelected({itemIndex: itemId, btnDisabled: false, NCategory: Category});
   };
+
   useEffect(() => {
     nav.setOptions({
       headerRight: () => (
@@ -121,7 +100,7 @@ function PurchaseOrder({navigation}) {
         <KategoriProduk
           ref={(el) => (modals[1] = el)}
           navigation={navigation}
-          data={data}
+          data={stateCategory.category}
           selected={selected}
           PressedItem={PressedItem}
         />
@@ -248,4 +227,17 @@ function PurchaseOrder({navigation}) {
   );
 }
 
-export default PurchaseOrder;
+const mapStateToProps = (state) => {
+  return {
+    stateLogin: state.login,
+    stateCategory: state.category,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(appActions.actions, dispatch),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PurchaseOrder);

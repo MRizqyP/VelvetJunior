@@ -16,6 +16,15 @@ export const LOGIN_GAGAL = 'LOGIN_GAGAL';
 export const AUTH_USER_SUCCESS = 'AUTH_USER_SUCCESS';
 export const AUTH_LOGOUT = 'AUTH_LOGOUT';
 
+export const GET_USER_PROFILE = 'GET_USER_PROFILE';
+export const SET_USER_PROFILE = 'SET_USER_PROFILE';
+
+export const GET_CATEGORY = 'GET_CATEGORY';
+export const SET_CATEGORY = 'SET_CATEGORY';
+
+export const GET_CUSTOMER = 'GET_CUSTOMER';
+export const SET_CUSTOMER = 'SET_CUSTOMER';
+
 export const RETRIEVE_PIN = 'RETRIEVE_PIN';
 export const SET_PIN = 'SET_PIN';
 export const PIN_REQ = 'PIN_REQ';

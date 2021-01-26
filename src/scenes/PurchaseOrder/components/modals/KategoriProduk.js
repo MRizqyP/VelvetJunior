@@ -15,12 +15,12 @@ export const KategoriProduk = forwardRef((props, ref) => {
     return (
       <TouchableOpacity
         onPress={() => {
-          PressedItem(item.id, item.kategori);
+          PressedItem(item.id, item.name);
         }}>
         <View style={{flex: 1, marginTop: 10, marginLeft: 20, marginRight: 20}}>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <Text style={{fontSize: 14, fontWeight: '400', marginBottom: 12}}>
-              {item.kategori}
+              {item.name}
             </Text>
             {selected.itemIndex == item.id ? (
               <Feather name="check" color={'orange'} size={20} />

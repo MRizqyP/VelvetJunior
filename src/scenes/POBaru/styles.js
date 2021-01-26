@@ -34,7 +34,6 @@ export default StyleSheet.create({
     borderBottomColor: '#D8D8D8',
   },
   containerSearch: {
-    flex: 1,
     flexDirection: 'row',
     borderBottomWidth: 1,
     borderColor: '#AAAAAA',
@@ -57,6 +56,16 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
     textAlign: 'center',
+  },
+  buttonSimpan1: {
+    justifyContent: 'center',
+    marginTop: 20,
+    marginLeft: 15,
+    width: 140,
+    height: 45,
+    backgroundColor: '#51C9C2',
+    borderRadius: 8,
+    elevation: 3,
   },
   footer: {
     backgroundColor: 'white',
