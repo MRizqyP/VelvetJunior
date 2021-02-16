@@ -10,6 +10,13 @@ const images = {
   ic_history: require('../assets/images/ic_history.png'),
   ic_toko: require('../assets/images/ic_toko.png'),
   ic_add_chat: require('../assets/images/ic_add_chat.png'),
+  ic_menu: require('../assets/images/ic_menu.png'),
+  ic_chat_o: require('../assets/images/ic_chat_o.png'),
+  ic_dashboard_o: require('../assets/images/ic_dashboard_o.png'),
+  ic_display_rak_o: require('../assets/images/ic_display_rak_o.png'),
+  ic_kehadiran_o: require('../assets/images/ic_kehadiran_o.png'),
+  ic_report_o: require('../assets/images/ic_report_o.png'),
+  ic_report_penjualan_o: require('../assets/images/ic_report_penjualan_o.png'),
 
   img_bg_awan: require('../assets/images/img_bg_awan.png'),
   img_bg_splash: require('../assets/images/img_bg_splash_screen.png'),

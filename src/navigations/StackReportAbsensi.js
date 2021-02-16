@@ -3,7 +3,7 @@ import {TouchableOpacity, Text, LogBox, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
 import RiwayatAbsen from '../scenes/RiwayatAbsen';
-import DetailAbsenMasuk from '../scenes/DetailAbsenMasuk';
+import DetailAbsen2 from '../scenes/DetailAbsen2';
 import RiwayatAbsenSM from '../scenes/RiwayatAbsenSM';
 import ReportAbsensis from '../scenes/ReportAbsensi';
 import DetailAbsen from '../scenes/DetailAbsensiSM';
@@ -53,7 +53,7 @@ export default function StackReportAbsensi({navigation, route}) {
 
       <ReportAbsensi.Screen
         name="Detail Absen Masuk"
-        component={DetailAbsenMasuk}
+        component={DetailAbsen2}
         options={{
           headerTintColor: 'white',
           headerStyle: {

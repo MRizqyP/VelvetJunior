@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Button,
   TouchableOpacity,
+  TouchableHighlight,
   Text,
   Alert,
   Image,
@@ -18,11 +19,11 @@ import Images from '../assets';
 export default function StackLaporan({navigation, route}) {
   const Laporans = createStackNavigator();
   LogBox.ignoreAllLogs();
-  if (route.state && route.state.index > 0) {
-    navigation.setOptions({tabBarVisible: false});
-  } else {
-    navigation.setOptions({tabBarVisible: true});
-  }
+  // if (route.state && route.state.index > 0) {
+  //   navigation.setOptions({tabBarVisible: false});
+  // } else {
+  //   navigation.setOptions({tabBarVisible: true});
+  // }
   return (
     <Laporans.Navigator>
       <Laporans.Screen
@@ -30,9 +31,7 @@ export default function StackLaporan({navigation, route}) {
         component={LaporanDisplayRak}
         options={{
           headerTintColor: 'white',
-          headerStyle: {
-            justifyContent: 'center',
-          },
+
           headerTransparent: true,
           headerTitle: '',
           headerRight: () => (
@@ -41,8 +40,9 @@ export default function StackLaporan({navigation, route}) {
                 name="search"
                 color={'#fff'}
                 size={25}
-                style={{paddingRight: 15}}
+                style={{padding: 15, flex: 1}}
               />
+              {/* <Text>WAW</Text> */}
             </TouchableOpacity>
           ),
           headerLeft: () => (
@@ -67,15 +67,14 @@ export default function StackLaporan({navigation, route}) {
             backgroundColor: '#51C9C2',
           },
 
-          headerRight: () => (
-            <TouchableOpacity
-              onPress={() => navigation.navigate('Riwayat Display Rak')}>
-              <Image
-                source={Images.ic_history}
-                style={{width: 25, height: 25, marginRight: 20}}
-              />
-            </TouchableOpacity>
-          ),
+          // headerRight: () => (
+          //   <TouchableOpacity onPress={() => console.log('WAW')}>
+          //     <Image
+          //       source={Images.ic_history}
+          //       style={{width: 25, height: 25, marginRight: 20}}
+          //     />
+          //   </TouchableOpacity>
+          // ),
           headerTitle: 'Detail Kondisi Display Rak',
           headerTitleStyle: {
             fontSize: 16,
@@ -91,7 +90,7 @@ export default function StackLaporan({navigation, route}) {
           headerStyle: {
             backgroundColor: '#51C9C2',
             // marginLeft: 30,
-            justifyContent: 'center',
+            // justifyContent: 'center',
           },
           // headerTransparent: true,
         }}

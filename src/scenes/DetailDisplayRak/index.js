@@ -31,6 +31,27 @@ import LineDashed from '../../components/LineDashed';
 function DetailDisplayRak({navigation, route}) {
   var screenWidth = Dimensions.get('window').width;
   var screenHeight = Dimensions.get('window').height;
+  const nav = useNavigation();
+  useEffect(() => {
+    nav.setOptions({
+      headerRight: () => (
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Riwayat Display Rak')}
+          style={{flex: 1, marginTop: 10}}>
+          <Image
+            source={Images.ic_history}
+            style={{
+              width: 25,
+              height: 25,
+              marginRight: 20,
+              // paddingRight: 15,
+              // flex: 1,
+            }}
+          />
+        </TouchableOpacity>
+      ),
+    });
+  }, []);
 
   return (
     <View style={{flex: 1}}>

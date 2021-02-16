@@ -26,7 +26,9 @@ function RiwayatAbsen({navigation}) {
         style={{width: screenWidth, height: screenHeight, position: 'absolute'}}
       />
       <TouchableOpacity
-        onPress={() => navigation.navigate('DetailRiwayatAbsensiSMSPG')}>
+        onPress={() =>
+          navigation.navigate('DetailAbsen', {name: 'Jum, 27 November 2020'})
+        }>
         <View style={[styles.boxInfo, {marginTop: 70}]}>
           <View style={{margin: 18}}>
             <Text style={FONT_BOLD_16}>Jum, 27 November 2020</Text>

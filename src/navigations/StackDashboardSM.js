@@ -11,11 +11,11 @@ import Icon from 'react-native-vector-icons/Feather';
 import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
 import LaporanSalesOrder from '../scenes/LaporanSalesOrder';
-import Dashboard from '../scenes/Dashboard';
+import DashboardSM from '../scenes/DashboardSM';
 import Berhasil from '../scenes/Berhasil';
 import Notfikasi from '../scenes/Notfikasi';
 import InputFormAbsen from '../scenes/InputFormAbsen';
-export default function StackDashboards({navigation, route}) {
+export default function StackDashboardsSM({navigation, route}) {
   const Dashboards = createStackNavigator();
   LogBox.ignoreAllLogs();
   if (route.state && route.state.index > 0) {
@@ -27,7 +27,7 @@ export default function StackDashboards({navigation, route}) {
     <Dashboards.Navigator>
       <Dashboards.Screen
         name="Dashboard"
-        component={Dashboard}
+        component={DashboardSM}
         options={{
           headerTransparent: true,
           headerLeft: () => (

@@ -67,6 +67,8 @@ function Tab({label, accessibilityState, onPress, namaicon}) {
     var iconnss = icon.icon4;
   } else if (namaicon === 'dashboard') {
     var iconnss = icon.icon;
+  }else if(namaicon === 'ic_menu'){
+    var iconnss = icon.ic_menu
   }
   // {
   //    ?  : null;

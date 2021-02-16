@@ -10,7 +10,7 @@ import {
 import Icon from 'react-native-vector-icons/Feather';
 import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
 import LaporanDisplay from '../scenes/LaporanDisplay';
-import KondisiAkhirDisplay from '../scenes/KondisiAkhir';
+import KondisiAkhirDisplay from '../scenes/InputFormAbsen';
 import DetailKondisiAkhirDisplay from '../scenes/DetailKondisiAkhirSPG';
 
 import RiwayatDisplayRak from '../scenes/RiwayatDisplayRak';

@@ -35,7 +35,7 @@ function Profile(props) {
         source={Images.backgroundprofile}
         style={{width: screenWidth, height: screenHeight, position: 'absolute'}}
       />
-      <View style={styles.header}>
+      {/* <View style={styles.header}>
         <View
           style={{
             width: 98,
@@ -130,8 +130,13 @@ function Profile(props) {
           </View>
         </View>
       </View>
+      */}
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
-        <Button text={'Keluar'} onPress={logout} backgroundColor={'red'} />
+        <Button
+          text={'Keluar'}
+          onPress={() => navigation.navigate('Log In')}
+          backgroundColor={'red'}
+        />
       </View>
     </View>
   );

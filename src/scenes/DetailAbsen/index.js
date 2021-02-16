@@ -20,7 +20,7 @@ import {
   FONT_REGULAR_12,
   FONT_REGULAR_14,
 } from '../../styles/typography';
-function Absen({navigation}) {
+function DetailAbsen({navigation}) {
   var screenWidth = Dimensions.get('window').width;
   var screenHeight = Dimensions.get('window').height;
 
@@ -47,8 +47,10 @@ function Absen({navigation}) {
               alignItems: 'center',
               marginBottom: 16,
             }}>
-            {/* <TouchableOpacity
-              onPress={() => navigation.navigate('Detail Absen Masuk')}
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate('Detail Absen 2', {name: 'Absen Masuk'})
+              }
               style={{
                 justifyContent: 'center',
                 padding: 10,
@@ -69,8 +71,8 @@ function Absen({navigation}) {
               <Text style={[FONT_BOLD_12, {color: 'black', marginTop: 5}]}>
                 09:28 AM
               </Text>
-            </TouchableOpacity> */}
-            <TouchableOpacity
+            </TouchableOpacity>
+            {/* <TouchableOpacity
               onPress={() =>
                 navigation.navigate('Input Absen', {name: 'Absen Masuk'})
               }>
@@ -78,8 +80,8 @@ function Absen({navigation}) {
                 source={Images.img_absen_masuk}
                 style={{width: 100, height: 120}}
               />
-            </TouchableOpacity>
-            <Text style={{textAlign: 'center'}}>Absen Masuk</Text>
+            </TouchableOpacity> */}
+            {/* <Text style={{textAlign: 'center'}}>Absen Masuk</Text> */}
           </View>
           <View style={{flex: 0.1, justifyContent: 'center'}}>
             <Dashed heightvalue={80} flexDirectionvalue={'column'} />
@@ -91,21 +93,33 @@ function Absen({navigation}) {
               alignItems: 'center',
               padding: 10,
             }}>
-            <Feather
-              name="arrow-down-circle"
-              color="#DB5943"
-              size={20}
-              style={styles.backgroundArrowRed}
-            />
-            <Text style={[FONT_BOLD_14, {color: '#DB5943', marginTop: 5}]}>
-              Absen Keluar
-            </Text>
-            <Text style={[FONT_REGULAR_12, {color: '#AAAAAA', marginTop: 5}]}>
-              11 Desember 2020
-            </Text>
-            <Text style={[FONT_BOLD_12, {color: 'black', marginTop: 5}]}>
-              05:28 AM
-            </Text>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate('Detail Absen 2', {
+                  name: 'Absen Keluar',
+                })
+              }
+              style={{
+                justifyContent: 'center',
+                padding: 10,
+                alignItems: 'center',
+              }}>
+              <Feather
+                name="arrow-down-circle"
+                color="#DB5943"
+                size={20}
+                style={styles.backgroundArrowRed}
+              />
+              <Text style={[FONT_BOLD_14, {color: '#DB5943', marginTop: 5}]}>
+                Absen Keluar
+              </Text>
+              <Text style={[FONT_REGULAR_12, {color: '#AAAAAA', marginTop: 5}]}>
+                11 Desember 2020
+              </Text>
+              <Text style={[FONT_BOLD_12, {color: 'black', marginTop: 5}]}>
+                05:28 AM
+              </Text>
+            </TouchableOpacity>
             {/* <TouchableOpacity
               onPress={() => navigation.navigate('Input Absen', {name: 'Absen Keluar'})}>
               <Image
@@ -286,4 +300,4 @@ function Absen({navigation}) {
   );
 }
 
-export default Absen;
+export default DetailAbsen;

@@ -241,7 +241,7 @@ function PurchaseOrder({navigation}) {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate('Detail Laporan Penjualan', {
+              navigation.navigate('Detail Purchase Order', {
                 namatoko: 'Nerby Baby Shop',
                 nopo: '100002299388231',
                 status: 'Menunggu',
@@ -334,7 +334,7 @@ function PurchaseOrder({navigation}) {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate('Detail Laporan Penjualan', {
+              navigation.navigate('Detail Purchase Order', {
                 namatoko: 'Nerby Baby Shop',
                 nopo: '100002299388231',
                 status: 'Menunggu',

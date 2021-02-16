@@ -24,6 +24,8 @@ import {bindActionCreators} from 'redux';
 import * as appActions from '../../reduxs/actions';
 import {act} from 'react-test-renderer';
 
+// import Geolocation from '@react-native-community/geolocation';
+
 function Login(props) {
   var screenWidth = Dimensions.get('window').width;
   var screenHeight = Dimensions.get('window').height;
@@ -40,10 +42,11 @@ function Login(props) {
   };
 
   const masuk = async () => {
-    await actions.LOGIN_REQ(
-      {email: form.email, password: form.password},
-      onSuccess,
-    );
+    // Geolocation.getCurrentPosition((info) => console.log(info));
+    // await actions.LOGIN_REQ(
+    //   {email: form.email, password: form.password},
+    //   onSuccess,
+    // );
   };
 
   if (state.login.userToken) {
@@ -138,9 +141,9 @@ function Login(props) {
           <Button
             // onPress={() => navigation.navigate('DashboardSP')}
             onPress={
-              masuk
+              // masuk
               // () => actions.LOGIN({email: 'qwe', password: 'qweasd'})
-              // () => navigation.navigate('DashboardSP')
+              () => navigation.navigate('DashboardSM')
             }
             text={'Masuk'}
           />

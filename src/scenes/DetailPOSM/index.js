@@ -19,27 +19,20 @@ import NumberFormat from 'react-number-format';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import RadioButton from '../../components/RadioButton';
 import Images from '../../assets';
+import Dashed from '../../components/LineDashed';
 import styles from './styles';
 import {Revisi} from './components/modals/Revisi';
 import {DiSetuju} from './components/modals/Disetujui';
 
 function DetailPO({navigation, route}) {
   const modalizeRef = useRef(null);
-  const modalizeRef1 = useRef(null);
-  const modalizeRef3 = useRef(null);
-  const modalizeRef2 = useRef(null);
-  const width = Dimensions.get('window').width;
-  const height = Dimensions.get('window').height;
+
   const PROP = [
     {
       key: 'tunai',
       text: 'Tunai',
     },
   ];
-
-  const onOpen = () => {
-    modalizeRef.current?.open();
-  };
 
   const [detail, setDetail] = useState(true);
   const [show, setShow] = useState(true);
@@ -58,6 +51,8 @@ function DetailPO({navigation, route}) {
       harga: '1500000',
     },
   ]);
+
+  const [detail1, setDetail1] = useState(false);
 
   let total = fields.reduce(function (prev, current) {
     return prev + +current.jumlah;
@@ -319,37 +314,69 @@ function DetailPO({navigation, route}) {
                         <Text style={styles.textInfoCusSub}>081122223432</Text>
                       </View>
                     </View>
-                    <View
-                      style={{
-                        flexDirection: 'row',
-                        marginTop: 10,
-                      }}>
-                      <View style={{flex: 1}}>
-                        <Text style={styles.textInfoCus}>No. NPWP</Text>
-                        <Text style={styles.textInfoCusSub}>8098733483223</Text>
-                      </View>
-                    </View>
-                    <View
-                      style={{
-                        flexDirection: 'row',
-                        marginTop: 10,
-                      }}>
-                      <View style={{flex: 1}}>
-                        <Text style={styles.textInfoCus}>Photo NPWP</Text>
-                        <Image
-                          source={Images.npwp}
-                          style={{
-                            height: 170,
-                            width: '100%',
-                            resizeMode: 'contain',
-                            borderRadius: 8,
-                            position: 'relative',
-                            flexWrap: 'wrap',
-                          }}
-                        />
-                      </View>
-                    </View>
                   </View>
+                ) : null}
+              </View>
+              <View style={[styles.formBoxProduk, {marginTop: 20}]}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                  }}>
+                  <Text style={[styles.title, {color: '#51C9C2'}]}>
+                    Informasi NPWP/NIK
+                  </Text>
+                  {!detail1 ? (
+                    <TouchableOpacity onPress={() => setDetail1(true)}>
+                      <Feather
+                        name="chevron-down"
+                        color={'#51C9C2'}
+                        size={25}
+                        style={{paddingLeft: 15}}
+                      />
+                    </TouchableOpacity>
+                  ) : (
+                    <TouchableOpacity onPress={() => setDetail1(false)}>
+                      <Feather
+                        name="chevron-up"
+                        color={'#51C9C2'}
+                        size={25}
+                        style={{paddingLeft: 15}}
+                      />
+                    </TouchableOpacity>
+                  )}
+                </View>
+                {detail1 ? (
+                  <>
+                    <View style={{flexDirection: 'row'}}>
+                      <View style={{padding: 8, flex: 1}}>
+                        <TouchableOpacity>
+                          <View style={styles.boxColor}>
+                            <Text
+                              style={{
+                                fontSize: 12,
+                                color: '#F18F01',
+                                fontWeight: 'bold',
+                              }}>
+                              Daftar NPWP
+                            </Text>
+                          </View>
+                        </TouchableOpacity>
+                      </View>
+                      <View style={{padding: 8, flex: 1}}>
+                        <View style={styles.boxColor}>
+                          <Text
+                            style={{
+                              fontSize: 12,
+                              color: '#F18F01',
+                              fontWeight: 'bold',
+                            }}>
+                            Daftar NIK
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </>
                 ) : null}
               </View>
             </View>

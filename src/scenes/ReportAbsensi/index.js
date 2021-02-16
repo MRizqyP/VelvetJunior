@@ -29,7 +29,7 @@ const listTab = [
   },
 ];
 
-function LaporanDisplayRak({navigation}) {
+function ReportAbsensi({navigation}) {
   var screenWidth = Dimensions.get('window').width;
   var screenHeight = Dimensions.get('window').height / 4;
   const [status, setStatus] = useState('Sales Person');
@@ -208,4 +208,4 @@ function LaporanDisplayRak({navigation}) {
   );
 }
 
-export default LaporanDisplayRak;
+export default ReportAbsensi;

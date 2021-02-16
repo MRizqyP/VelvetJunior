@@ -1,22 +1,13 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {
-  Button,
-  TouchableOpacity,
-  Text,
-  Alert,
-  View,
-  ActivityIndicator,
-} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import 'react-native-gesture-handler';
 import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import TabComponent from '../components/Tab';
 import Login from '../scenes/Login';
 import SplashScreen from '../scenes/SplasScreen';
 import AturKataSandi from '../scenes/AturKataSandi';
-import jwt_decode from 'jwt-decode';
 import InputPin from '../scenes/GantiPin';
 import GantiKataSandi from '../scenes/GantiKataSandi';
 import {Host, Portal} from 'react-native-portalize';
@@ -25,12 +16,14 @@ import StackPurchaseOrderSP from './StackPurchaseOrderSP';
 import StackPurchaseOrderSM from './StackPurchaseOrderSM';
 import StackChats from './StackChat';
 import StackDashboards from './StackDashboard';
+import StackDashboardsSM from './StackDashboardSM';
 import StackAbsen from './StackAbsen';
 import StackLaporan from './StackLaporan';
 import StackReportAbsensi from './StackReportAbsensi';
+import StackMenu from './StackMenu';
 
 import StackLaporanSPG from './StackLaporanSPG';
-import StackPurchaseOrderSPG from './StackPurchaseOrderSPG';
+import StackLaporanPenjualanSPG from './StackLaporanPenjualanSPG';
 import StackAbsenSPG from './StackAbsenSPG';
 const Tabs = createBottomTabNavigator();
 const Logins = createStackNavigator();
@@ -71,7 +64,6 @@ function stackTabsSP() {
             ),
           }}
         />
-
         <Tabs.Screen
           name="PO"
           component={StackPurchaseOrderSP}
@@ -90,7 +82,6 @@ function stackTabsSP() {
             ),
           }}
         />
-
         <Tabs.Screen
           name="Profile"
           component={StackProfile}
@@ -119,19 +110,10 @@ function stackTabsSM() {
         }}>
         <Tabs.Screen
           name="Dashboard"
-          component={StackDashboards}
+          component={StackDashboardsSM}
           options={{
             tabBarButton: (props) => (
               <TabComponent label="home" namaicon="dashboard" {...props} />
-            ),
-          }}
-        />
-        <Tabs.Screen
-          name="Laporan"
-          component={StackLaporan}
-          options={{
-            tabBarButton: (props) => (
-              <TabComponent label="home" namaicon="ic_kehadiran" {...props} />
             ),
           }}
         />
@@ -147,7 +129,7 @@ function stackTabsSM() {
         />
         <Tabs.Screen
           name="Chat"
-          component={StackReportAbsensi}
+          component={StackChats}
           options={{
             tabBarButton: (props) => (
               <TabComponent label="home" namaicon="ic_chat" {...props} />
@@ -156,11 +138,11 @@ function stackTabsSM() {
         />
 
         <Tabs.Screen
-          name="Profile"
-          component={StackProfile}
+          name="Menu"
+          component={StackMenu}
           options={{
             tabBarButton: (props) => (
-              <TabComponent label="home" namaicon="pasfoto" {...props} />
+              <TabComponent label="home" namaicon="ic_menu" {...props} />
             ),
           }}
         />
@@ -202,7 +184,7 @@ function stackTabsSPG() {
 
         <Tabs.Screen
           name="PO"
-          component={StackPurchaseOrderSPG}
+          component={StackLaporanPenjualanSPG}
           options={{
             tabBarButton: (props) => (
               <TabComponent label="Absen" namaicon="ic_report" {...props} />
@@ -301,14 +283,12 @@ function stackTabsPPIC() {
 function Routes(props) {
   const {state, actions, navigation} = props;
   const [pin, setRole] = useState('');
-
   useEffect(() => {
     setTimeout(async () => {
       const result = await getPin();
       actions.PIN_REQ({pin: result});
     }, 2000);
   }, []);
-  // console.log(state);
 
   if (state.pin.isLoading) {
     return (
@@ -346,7 +326,52 @@ function Routes(props) {
   return (
     <NavigationContainer>
       <Logins.Navigator>
-        {state.login.isLoggedin ? (
+        <Logins.Screen
+          name="DashboardSP"
+          component={stackTabsSP}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Logins.Screen
+          name="DashboardSM"
+          component={stackTabsSM}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Logins.Screen
+          name="DashboardSPG"
+          component={stackTabsSPG}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Logins.Screen
+          name="Log In"
+          component={Login}
+          options={{
+            headerTransparent: true,
+            headerTitle: '',
+          }}
+        />
+        <Logins.Screen
+          name="Lupa Sandi"
+          component={AturKataSandi}
+          options={{
+            headerTransparent: true,
+            headerTitle: '',
+          }}
+        />
+        <Logins.Screen
+          name="Ganti Kata Sandi"
+          component={GantiKataSandi}
+          options={{
+            headerTransparent: true,
+            headerTitle: '',
+          }}
+        />
+        {/* {state.login.isLoggedin ? (
           <>
             {state.auth.roleName === 'Sales Person' ? (
               <Logins.Screen
@@ -403,7 +428,7 @@ function Routes(props) {
               }}
             />
           </>
-        )}
+        )} */}
       </Logins.Navigator>
     </NavigationContainer>
   );

@@ -32,7 +32,7 @@ function KondisiAkhir({navigation}) {
       setForm({image: image.path});
     });
   };
-  console.log(form.image);
+  // console.log(form.image);
   return (
     <View style={styles.container}>
       <ScrollView>

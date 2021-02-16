@@ -19,7 +19,7 @@ import {
   FONT_REGULAR_12,
   FONT_REGULAR_14,
 } from '../../styles/typography';
-function DetailAbsenMasuk({navigation}) {
+function DetailAbsen2({navigation}) {
   const [form, setForm] = useState({
     keterangan: '',
   });
@@ -96,4 +96,4 @@ function DetailAbsenMasuk({navigation}) {
   );
 }
 
-export default DetailAbsenMasuk;
+export default DetailAbsen2;

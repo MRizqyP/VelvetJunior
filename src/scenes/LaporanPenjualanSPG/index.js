@@ -14,6 +14,7 @@ import {Modalize} from 'react-native-modalize';
 import {Host, Portal} from 'react-native-portalize';
 import Feather from 'react-native-vector-icons/Feather';
 import Dashed from '../../components/LineDashed';
+import {useNavigation} from '@react-navigation/native';
 import Images from '../../assets';
 import styles from './styles';
 import {Filter} from './components/modals/Filter';
@@ -45,7 +46,7 @@ function LaporanPenjualan({navigation}) {
   }
   var screenWidth = Dimensions.get('window').width;
   var screenHeight = Dimensions.get('window').height / 4;
-
+  const nav = useNavigation();
   const [show, setShow] = useState(true);
   const [selected, setSelected] = useState({
     itemIndex: '',
@@ -96,7 +97,32 @@ function LaporanPenjualan({navigation}) {
   const PressedItem = (itemId, Category) => {
     setSelected({itemIndex: itemId, btnDisabled: false, NCategory: Category});
   };
+  useEffect(() => {
+    nav.setOptions({
+      headerRight: () => (
+        <TouchableOpacity onPress={() => modals[1].open()}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Text style={{fontSize: 12, color: 'white', textAlign: 'center'}}>
+              Buat Laporan
+            </Text>
+            <Feather
+              name="plus-circle"
+              color={'white'}
+              size={20}
+              style={{paddingRight: 15, paddingLeft: 4}}
+            />
+          </View>
+        </TouchableOpacity>
+      ),
+    });
 
+    setShow(false);
+  }, [show]);
   return (
     <>
       <Portal>
@@ -164,25 +190,6 @@ function LaporanPenjualan({navigation}) {
                   </Text>
                 </View>
               </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  marginTop: 17,
-                }}>
-                <View style={{flex: 1.6}}>
-                  <Text style={[FONT_BOLD_10, {color: '#AAAAAA'}]}>Toko</Text>
-                  <Text style={[FONT_REGULAR_12, styles.subTT]}>Baby Shop</Text>
-                </View>
-
-                <View style={{flex: 0.8}}>
-                  <Text style={[FONT_BOLD_10, {color: '#AAAAAA'}]}>
-                    Nama SPG
-                  </Text>
-                  <Text style={[FONT_REGULAR_12, styles.subTT]}>
-                    Ekaterina Tankova
-                  </Text>
-                </View>
-              </View>
             </View>
           </TouchableOpacity>
           <TouchableOpacity
@@ -201,45 +208,16 @@ function LaporanPenjualan({navigation}) {
                   marginTop: 17,
                 }}>
                 <View style={{flex: 0.8}}>
-                  <Text style={[FONT_BOLD_10, {color: '#AAAAAA'}]}>
-                    Tanggal
-                  </Text>
-                  <Text style={[FONT_REGULAR_12, styles.subTT]}>
-                    13 Dec 2020
-                  </Text>
+                  <Text style={styles.subT}>Tanggal</Text>
+                  <Text style={styles.subTT}>13 Dec 2020</Text>
                 </View>
                 <View style={{flex: 0.8}}>
-                  <Text style={[FONT_BOLD_10, {color: '#AAAAAA'}]}>
-                    Total Terjual
-                  </Text>
-                  <Text style={[FONT_REGULAR_12, styles.subTT]}>2000 Pack</Text>
+                  <Text style={styles.subT}>Total Terjual</Text>
+                  <Text style={styles.subTT}>2000 Pack</Text>
                 </View>
                 <View style={{flex: 0.8}}>
-                  <Text style={[FONT_BOLD_10, {color: '#AAAAAA'}]}>
-                    Total Harga
-                  </Text>
-                  <Text style={[FONT_REGULAR_12, styles.subTT]}>
-                    Rp 500.000.000
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  marginTop: 17,
-                }}>
-                <View style={{flex: 1.6}}>
-                  <Text style={[FONT_BOLD_10, {color: '#AAAAAA'}]}>Toko</Text>
-                  <Text style={[FONT_REGULAR_12, styles.subTT]}>Baby Shop</Text>
-                </View>
-
-                <View style={{flex: 0.8}}>
-                  <Text style={[FONT_BOLD_10, {color: '#AAAAAA'}]}>
-                    Nama SPG
-                  </Text>
-                  <Text style={[FONT_REGULAR_12, styles.subTT]}>
-                    Ekaterina Tankova
-                  </Text>
+                  <Text style={styles.subT}>Total Harga</Text>
+                  <Text style={styles.subTT}>Rp 500.000.000</Text>
                 </View>
               </View>
             </View>
@@ -253,52 +231,53 @@ function LaporanPenjualan({navigation}) {
               })
             }>
             <View style={styles.box}>
-              <Text style={[FONT_BOLD_20, {color: 'black'}]}>Basic Wear</Text>
+              <Text style={[FONT_BOLD_20, {color: 'black'}]}>Singlet</Text>
               <View
                 style={{
                   flexDirection: 'row',
                   marginTop: 17,
                 }}>
                 <View style={{flex: 0.8}}>
-                  <Text style={[FONT_BOLD_10, {color: '#AAAAAA'}]}>
-                    Tanggal
-                  </Text>
-                  <Text style={[FONT_REGULAR_12, styles.subTT]}>
-                    13 Dec 2020
-                  </Text>
+                  <Text style={styles.subT}>Tanggal</Text>
+                  <Text style={styles.subTT}>13 Dec 2020</Text>
                 </View>
                 <View style={{flex: 0.8}}>
-                  <Text style={[FONT_BOLD_10, {color: '#AAAAAA'}]}>
-                    Total Terjual
-                  </Text>
-                  <Text style={[FONT_REGULAR_12, styles.subTT]}>2000 Pack</Text>
+                  <Text style={styles.subT}>Total Terjual</Text>
+                  <Text style={styles.subTT}>2000 Pack</Text>
                 </View>
                 <View style={{flex: 0.8}}>
-                  <Text style={[FONT_BOLD_10, {color: '#AAAAAA'}]}>
-                    Total Harga
-                  </Text>
-                  <Text style={[FONT_REGULAR_12, styles.subTT]}>
-                    Rp 500.000.000
-                  </Text>
+                  <Text style={styles.subT}>Total Harga</Text>
+                  <Text style={styles.subTT}>Rp 500.000.000</Text>
                 </View>
               </View>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('Detail Laporan Penjualan', {
+                namatoko: 'Nerby Baby Shop',
+                nopo: '100002299388231',
+                status: 'Menunggu',
+              })
+            }>
+            <View style={styles.box}>
+              <Text style={[FONT_BOLD_20, {color: 'black'}]}>Dream Wear</Text>
               <View
                 style={{
                   flexDirection: 'row',
                   marginTop: 17,
                 }}>
-                <View style={{flex: 1.6}}>
-                  <Text style={[FONT_BOLD_10, {color: '#AAAAAA'}]}>Toko</Text>
-                  <Text style={[FONT_REGULAR_12, styles.subTT]}>Baby Shop</Text>
-                </View>
-
                 <View style={{flex: 0.8}}>
-                  <Text style={[FONT_BOLD_10, {color: '#AAAAAA'}]}>
-                    Nama SPG
-                  </Text>
-                  <Text style={[FONT_REGULAR_12, styles.subTT]}>
-                    Ekaterina Tankova
-                  </Text>
+                  <Text style={styles.subT}>Tanggal</Text>
+                  <Text style={styles.subTT}>13 Dec 2020</Text>
+                </View>
+                <View style={{flex: 0.8}}>
+                  <Text style={styles.subT}>Total Terjual</Text>
+                  <Text style={styles.subTT}>2000 Pack</Text>
+                </View>
+                <View style={{flex: 0.8}}>
+                  <Text style={styles.subT}>Total Harga</Text>
+                  <Text style={styles.subTT}>Rp 500.000.000</Text>
                 </View>
               </View>
             </View>

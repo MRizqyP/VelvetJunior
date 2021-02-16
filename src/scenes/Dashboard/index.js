@@ -9,22 +9,16 @@ import {
   ScrollView,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
-import {Modalize} from 'react-native-modalize';
 import {Host, Portal} from 'react-native-portalize';
-import Header from '../../components/HeaderModal';
-// import Dashed from '../../components/LineDashed';
 import styles from './styles';
 import Images from '../../assets';
 import CardInfo from './components/CardInfo';
 import Button from '../../components/Button';
 import Dashed from '../../components/LineDashed';
 import {KategoriProduk} from './components/modals/KategoriProduk';
-import {
-  FONT_BOLD_10,
-  FONT_BOLD_14,
-  FONT_BOLD_16,
-  FONT_REGULAR_14,
-} from '../../styles/typography';
+import {FONT_BOLD_16, FONT_REGULAR_14} from '../../styles/typography';
+import UserInactivity from 'react-native-user-inactivity';
+// import BackgroundTimer from 'react-native-user-inactivity/lib/BackgroundTimer';
 function Dashboard({navigation}) {
   var screenWidth = Dimensions.get('window').width;
   var screenHeight = Dimensions.get('window').height;
@@ -37,6 +31,12 @@ function Dashboard({navigation}) {
       <Portal>
         <KategoriProduk ref={(el) => (modals[0] = el)} />
       </Portal>
+      <UserInactivity
+        timeForInactivity={10000}
+        onAction={(isActive) => {
+          navigation.navigate('Profile');
+        }}
+      />
 
       <View style={[styles.formBox]}>
         <Image
@@ -86,7 +86,7 @@ function Dashboard({navigation}) {
           Kunjungan Hari Ini
         </Text>
         <Dashed />
-        {/* <View style={{justifyContent: 'center', alignItems: 'center'}}>
+        <View style={{justifyContent: 'center', alignItems: 'center'}}>
           <Image
             source={Images.img_visiting_toko}
             style={{width: screenWidth / 2, height: screenHeight / 4}}
@@ -96,14 +96,15 @@ function Dashboard({navigation}) {
           </Text>
           <Button
             text={'Buat Kunjungan'}
-            onPress={() => navigation.navigate('Kunjungan Baru')}
+            onPress={() =>
+              navigation.navigate('Input Absen', {name: 'Kunjungan Baru'})
+            }
           />
-        </View> */}
-        <View style={styles.boxInfo}>
+        </View>
+        {/* <View style={styles.boxInfo}>
           <View style={{padding: 16}}>
             <View style={{flexDirection: 'row', marginTop: 15}}>
               <Image source={Images.ic_toko} style={{width: 25, height: 25}} />
-              {/* <Feather name="shopping-cart" color="#F18F01" size={20} /> */}
               <View style={{marginLeft: 10, flex: 1}}>
                 <Text style={[FONT_BOLD_14, {color: 'black'}]}>
                   Nerby Baby Shop
@@ -139,7 +140,7 @@ function Dashboard({navigation}) {
         </View>
         <View style={{justifyContent: 'center', alignItems: 'center'}}>
           <Button text={'Check Out Kunjungan'} onPress={onOpen} />
-        </View>
+        </View> */}
       </View>
       <View style={[styles.formBox, {marginTop: 10}]}>
         <Text style={[FONT_BOLD_16, {marginBottom: 10}]}>

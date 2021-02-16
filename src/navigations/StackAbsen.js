@@ -3,9 +3,11 @@ import {TouchableOpacity, Text, LogBox, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
 import Absen from '../scenes/Absen';
-import DetailAbsenMasuk from '../scenes/DetailAbsenMasuk';
-import KondisiAkhir from '../scenes/KondisiAkhir';
+import DetailAbsen2 from '../scenes/DetailAbsen2';
+import InputFormAbsen from '../scenes/InputFormAbsen';
 import RiwayatAbsen from '../scenes/RiwayatAbsen';
+import DetailAbsen from '../scenes/DetailAbsen';
+import DetailRiwayatAbsensiSMSPG from '../scenes/DetailRiwayatAbsensiSMSPG';
 import Images from '../assets/';
 export default function StackChat({navigation, route}) {
   const Absens = createStackNavigator();
@@ -48,7 +50,7 @@ export default function StackChat({navigation, route}) {
 
       <Absens.Screen
         name="Input Absen"
-        component={KondisiAkhir}
+        component={InputFormAbsen}
         options={({route}) => ({
           headerTintColor: 'white',
           title: route.params.name,
@@ -59,28 +61,53 @@ export default function StackChat({navigation, route}) {
       />
 
       <Absens.Screen
-        name="Detail Absen Masuk"
-        component={DetailAbsenMasuk}
-        options={{
+        name="Detail Absen 2"
+        component={DetailAbsen2}
+        options={({route}) => ({
           headerTintColor: 'white',
           headerStyle: {
             backgroundColor: '#51C9C2',
           },
-        }}
+          headerTitle: `Detail ${route.params.name}`,
+          // headerTransparent: true,
+        })}
       />
       <Absens.Screen
         name="Riwayat Kehadiran"
         component={RiwayatAbsen}
         options={{
           headerTintColor: 'white',
-          headerStyle: {
-            // backgroundColor: '#51C9C2',
-            // marginLeft: 30,
-            justifyContent: 'center',
-          },
           headerTransparent: true,
         }}
       />
+
+      <Absens.Screen
+        name="DetailAbsen"
+        component={DetailAbsen}
+        options={({route}) => ({
+          headerTintColor: 'white',
+
+          headerTransparent: true,
+          headerStyle: {
+            backgroundColor: '#51C9C2',
+          },
+          headerTitle: route.params.name,
+          // headerTransparent: true,
+        })}
+      />
+
+      {/* <Absens.Screen
+        name="DetailRiwayatAbsensiSMSPG"
+        component={DetailRiwayatAbsensiSMSPG}
+        options={({route}) => ({
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: '#51C9C2',
+          },
+          headerTitle: `Detail ${route.params.name}`,
+          // headerTransparent: true,
+        })}
+      /> */}
     </Absens.Navigator>
   );
 }

@@ -7,8 +7,17 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     color: '#AAAAAA',
   },
-  action: {
-    marginTop: 30,
+  boxColor: {
+    paddingLeft: 8,
+    paddingRight: 8,
+    paddingTop: 4,
+    paddingBottom: 4,
+    borderWidth: 1,
+    borderRadius: 8,
+    borderColor: '#F18F01',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 10,
   },
   textInput: {
     flex: 1,
