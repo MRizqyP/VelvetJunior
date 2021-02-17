@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -7,6 +7,7 @@ import {
   Dimensions,
   TouchableOpacity,
   ScrollView,
+  // PanResponder,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import {Host, Portal} from 'react-native-portalize';
@@ -18,6 +19,7 @@ import Dashed from '../../components/LineDashed';
 import {KategoriProduk} from './components/modals/KategoriProduk';
 import {FONT_BOLD_16, FONT_REGULAR_14} from '../../styles/typography';
 import UserInactivity from 'react-native-user-inactivity';
+
 // import BackgroundTimer from 'react-native-user-inactivity/lib/BackgroundTimer';
 function Dashboard({navigation}) {
   var screenWidth = Dimensions.get('window').width;
@@ -26,17 +28,49 @@ function Dashboard({navigation}) {
   const onOpen = () => {
     modals[0].open();
   };
+  // React.useEffect(() => {
+  //   const unsubscribe = navigation.addListener('focus', () => {
+  //     console.log('WAWbanget');
+  //   });
+
+  //   return unsubscribe;
+  // }, []);
+
+  // useEffect(() => {
+  //   resetInactivityTimeout();
+  // }, []);
+
+  // const timerId = useRef(false);
+  // const [timeForInactivityInSecond, setTimeForInactivityInSecond] = useState(
+  //   100,
+  // );
+
+  // const panResponder = React.useRef(
+  //   PanResponder.create({
+  //     onStartShouldSetPanResponderCapture: () => {
+  //       console.log('tapi boong');
+  //       resetInactivityTimeout();
+  //     },
+  //   }),
+  // ).current;
+
+  // const resetInactivityTimeout = () => {
+  //   clearTimeout(timerId.current);
+  //   timerId.current = setTimeout(() => {
+  //     console.log('siieu cicing');
+  //   }, 3000);
+  // };
   return (
     <ScrollView style={styles.container}>
       <Portal>
         <KategoriProduk ref={(el) => (modals[0] = el)} />
       </Portal>
-      <UserInactivity
+      {/* <UserInactivity
         timeForInactivity={10000}
         onAction={(isActive) => {
           navigation.navigate('Profile');
         }}
-      />
+      /> */}
 
       <View style={[styles.formBox]}>
         <Image

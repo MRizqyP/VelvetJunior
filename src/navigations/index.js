@@ -289,7 +289,6 @@ function Routes(props) {
       actions.PIN_REQ({pin: result});
     }, 2000);
   }, []);
-
   if (state.pin.isLoading) {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>

@@ -7,11 +7,11 @@ import Chatting from '../scenes/ListPercakapan';
 export default function StackChat({navigation, route}) {
   const Chats = createStackNavigator();
   LogBox.ignoreAllLogs();
-  if (route.state && route.state.index > 0) {
-    navigation.setOptions({tabBarVisible: false});
-  } else {
-    navigation.setOptions({tabBarVisible: true});
-  }
+  // if (route.state && route.state.index > 0) {
+  //   navigation.setOptions({tabBarVisible: false});
+  // } else {
+  //   navigation.setOptions({tabBarVisible: true});
+  // }
   return (
     <Chats.Navigator>
       <Chats.Screen

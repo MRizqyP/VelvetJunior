@@ -12,11 +12,11 @@ import Images from '../assets/';
 export default function StackChat({navigation, route}) {
   const Absens = createStackNavigator();
   LogBox.ignoreAllLogs();
-  if (route.state && route.state.index > 0) {
-    navigation.setOptions({tabBarVisible: false});
-  } else {
-    navigation.setOptions({tabBarVisible: true});
-  }
+  // if (route.state && route.state.index > 0) {
+  //   navigation.setOptions({tabBarVisible: false});
+  // } else {
+  //   navigation.setOptions({tabBarVisible: true});
+  // }
   return (
     <Absens.Navigator>
       <Absens.Screen
